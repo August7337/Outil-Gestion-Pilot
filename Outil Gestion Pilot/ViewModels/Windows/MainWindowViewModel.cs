@@ -22,6 +22,24 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
                 Content = "Data",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
                 TargetPageType = typeof(Views.Pages.DataPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Produits",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Box24 },
+                TargetPageType = typeof(Views.Pages.ProductsPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Panier",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.Cart24 },
+                TargetPageType = typeof(Views.Pages.CartPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Commandes",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.NotepadEdit20 },
+                TargetPageType = typeof(Views.Pages.OrdersPage)
             }
         };
 

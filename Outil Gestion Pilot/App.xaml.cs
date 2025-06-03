@@ -8,6 +8,7 @@ using Outil_Gestion_Pilot.Views.Pages;
 using Outil_Gestion_Pilot.Views.Windows;
 using System.IO;
 using System.Reflection;
+using System.Windows.Controls;
 using System.Windows.Threading;
 using Wpf.Ui;
 using Wpf.Ui.DependencyInjection;
@@ -50,8 +51,14 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
+                services.AddSingleton<ProductsPage>();
+                services.AddSingleton<ProductsViewModel>();
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
+                services.AddSingleton<CartPage>();
+                services.AddSingleton<CartViewModel>();
+                services.AddSingleton<OrdersPage>();
+                services.AddSingleton<OrdersViewModel>();
             }).Build();
 
         /// <summary>
