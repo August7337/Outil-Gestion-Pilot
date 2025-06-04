@@ -22,6 +22,9 @@ namespace Outil_Gestion_Pilot.Views.Windows
             SystemThemeWatcher.Watch(this);
 
             InitializeComponent();
+            ConnectionWindow connectionWindow = new ConnectionWindow();
+            connectionWindow.ShowDialog();
+
             SetPageService(navigationViewPageProvider);
 
             navigationService.SetNavigationControl(RootNavigation);

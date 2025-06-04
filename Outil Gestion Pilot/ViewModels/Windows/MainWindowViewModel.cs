@@ -6,7 +6,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
     public partial class MainWindowViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _applicationTitle = "WPF UI - Outil_Gestion_Pilot";
+        private string _applicationTitle = "Pilot";
 
         [ObservableProperty]
         private ObservableCollection<object> _menuItems = new()

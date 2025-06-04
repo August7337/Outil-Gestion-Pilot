@@ -47,6 +47,9 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
 
+                services.AddSingleton<ConnectionWindow>();
+                services.AddSingleton<ConnectionWindowViewModel>();
+
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();
