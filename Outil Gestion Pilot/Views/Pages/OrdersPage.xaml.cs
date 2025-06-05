@@ -10,7 +10,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
         public OrdersPage(OrdersViewModel viewModel)
         {
             ViewModel = viewModel;
-            DataContext = this;
+            DataContext = ViewModel;
             InitializeComponent();
         }
     }
