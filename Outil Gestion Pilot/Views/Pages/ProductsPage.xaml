@@ -9,28 +9,59 @@
     Title="ProductsPage"
     d:DataContext="{d:DesignInstance local:ProductsPage,
                                  IsDesignTimeCreatable=False}"
-
     d:DesignHeight="450"
     d:DesignWidth="800"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-
-    <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <ui:Button
-            Grid.Column="0"
-            Content="Click me!"
-            Icon="Fluent24" />
-        <TextBlock
-            Grid.Column="1"
-            Margin="12,0,0,0"
-            VerticalAlignment="Center"
-            Text="Hey" />
+    <Grid>
+        <DataGrid
+            x:Name="productsDG"
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Products}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding ImagePath}"
+                    Header="Image" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Code}"
+                    Header="Code Produit" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="Nom" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Category}"
+                    Header="Catégorie" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Type}"
+                    Header="Type" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Tipe}"
+                    Header="Type de pointe" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding SellingPrice, StringFormat={}{0:N2} €}"
+                    Header="Prix vente" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Stock}"
+                    Header="Quantité" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding ColorDisplay}"
+                    Header="Couleurs" />
+                <DataGridTextColumn
+                    Width="*"
+                    Header="Commander" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

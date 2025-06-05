@@ -29,7 +29,7 @@
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
             </ui:TitleBar.Icon>
         </ui:TitleBar>
-        <StackPanel VerticalAlignment="Center" Width="260">
+        <StackPanel VerticalAlignment="Center" Width="260" Cursor="">
             <ui:TextBlock Text="Connexion"
                        FontSize="24"
                        FontWeight="Bold"
@@ -39,13 +39,13 @@
             <ui:TextBox x:Name="usernameBox" Margin="0,0,0,10" ></ui:TextBox>
             
             <Label Target="{Binding ElementName=passwordBox}">_Mot de passe</Label>
-            <ui:PasswordBox x:Name="passwordBox" Margin="0,0,0,20"/>
+            <ui:PasswordBox x:Name="passwordBox" Margin="0,0,0,30"/>
 
 
             <ui:Button Content="Se Connecter"
                        Padding="10"
                        Click="Button_Click" 
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Center" IsDefault="True"/>
         </StackPanel>
     </Grid>
 </ui:FluentWindow>
