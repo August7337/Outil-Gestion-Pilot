@@ -16,52 +16,118 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <Grid>
-        <DataGrid
-            x:Name="productsDG"
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
-            ItemsSource="{Binding Products}">
-            <DataGrid.Columns>
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding ImagePath}"
-                    Header="Image" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Code}"
-                    Header="Code Produit" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Name}"
-                    Header="Nom" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Category}"
-                    Header="Catégorie" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Type}"
-                    Header="Type" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Tipe}"
-                    Header="Type de pointe" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding SellingPrice, StringFormat={}{0:N2} €}"
-                    Header="Prix vente" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding Stock}"
-                    Header="Quantité" />
-                <DataGridTextColumn
-                    Width="*"
-                    Binding="{Binding ColorDisplay}"
-                    Header="Couleurs" />
-                <DataGridTextColumn
-                    Width="*"
-                    Header="Commander" />
-            </DataGrid.Columns>
-        </DataGrid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Code Produit :</Label>
+                    <ui:TextBox 
+                        Width="120"
+                        PlaceholderText="Entrer un code" 
+                        x:Name="searchCodeTxt" 
+                        Text="{Binding SearchCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Catégorie</Label>
+                    <ComboBox
+                        SelectedIndex="0" >
+                        <ComboBoxItem Content="Toutes" />
+                        <ComboBoxItem Content="Bureau" />
+                        <ComboBoxItem Content="Loisir" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Type :</Label>
+                    <ComboBox
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Tout" />
+                        <ComboBoxItem Content="Roller gel" />
+                        <ComboBoxItem Content="Couleur fun" />
+                        <ComboBoxItem Content="Frixion Ball" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Type de pointe :</Label>
+                    <ComboBox
+                        SelectedIndex="0">
+                        <ComboBoxItem Content="Tout" />
+                        <ComboBoxItem Content="Pointe fine" />
+                        <ComboBoxItem Content="Pointe moyenne" />
+                        <ComboBoxItem Content="Pointe grosse" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Prix :</Label>
+                    <ui:NumberBox MinWidth="100" />
+                </StackPanel>
+                <StackPanel Margin="0,0,20,0">
+                    <Label>Quantité :</Label>
+                    <ui:NumberBox MinWidth="100" />
+                </StackPanel>
+                <StackPanel Width="76">
+                    <CheckBox
+                        Content="Bleu"
+                        IsChecked="True" />
+                    <CheckBox
+                        Content="Noir" 
+                        IsChecked="True" />
+                </StackPanel>
+                <StackPanel>
+                    <CheckBox
+                        Content="Rouge" 
+                        IsChecked="True" />
+                    <CheckBox
+                        Content="Vert" 
+                        IsChecked="True" />
+                </StackPanel>
+            </StackPanel>
+            
+            <DataGrid
+                x:Name="productsDG"
+                AutoGenerateColumns="False"
+                IsReadOnly="True"
+                ItemsSource="{Binding ProductsView}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding ImagePath}"
+                        Header="Image" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Code}"
+                        Header="Code Produit" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Name}"
+                        Header="Nom" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Category}"
+                        Header="Catégorie" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Type}"
+                        Header="Type" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Tipe}"
+                        Header="Type de pointe" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding SellingPrice, StringFormat={}{0:N2} €}"
+                        Header="Prix vente" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding Stock}"
+                        Header="Quantité" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding ColorDisplay}"
+                        Header="Couleurs" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Header="Commander" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Page>
