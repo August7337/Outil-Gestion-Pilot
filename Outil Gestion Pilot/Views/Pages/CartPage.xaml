@@ -16,7 +16,7 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel>
+        <StackPanel Height="350" Margin="0,10,0,215">
             <StackPanel Orientation="Horizontal" Margin="200,0,0,20">
                 <StackPanel Margin="0,0,20,0">
                     <Label>Code Produit :</Label>
@@ -34,27 +34,6 @@
                     <Label>Quantité :</Label>
                     <ui:NumberBox MinWidth="100" />
                 </StackPanel>
-                <!--<StackPanel Margin="0,0,20,0">
-                    <Label>Catégorie</Label>
-                    <ComboBox
-                        SelectedIndex="0" >
-                        <ComboBoxItem Content="Toutes" />
-                        <ComboBoxItem Content="Bureau" />
-                        <ComboBoxItem Content="Loisir" />
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel Margin="0,0,20,0">
-                    <Label>Type :</Label>
-                    <ComboBox
-                        SelectedIndex="0">
-                        <ComboBoxItem Content="Tout" />
-                        <ComboBoxItem Content="Roller gel" />
-                        <ComboBoxItem Content="Couleur fun" />
-                        <ComboBoxItem Content="Frixion Ball" />
-                    </ComboBox>
-                </StackPanel>-->
-                
-                
 
             </StackPanel>
 
@@ -88,5 +67,33 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
-    </Grid>
+        <StackPanel Orientation="Horizontal" Margin="0,350,0,0" >
+        <StackPanel />
+            <StackPanel>
+         <Label x:Name="labLivraison" Content="Mode de livraison" />
+         <ComboBox x:Name="lstLivraison"
+    SelectedIndex="0" VerticalAlignment="Top" >
+            <ComboBoxItem Content="A" />
+            <ComboBoxItem Content="B" />
+            <ComboBoxItem Content="C" />
+        </ComboBox>
+        </StackPanel>
+            
+            <StackPanel/>
+            <StackPanel>
+                <Label x:Name="labRevendeur" Content="Revendeur" RenderTransformOrigin="0.466,0.509"/>
+                <ComboBox x:Name="lstRevendeur"
+    SelectedIndex="0" VerticalAlignment="Top" RenderTransformOrigin="0.187,0.38" >
+                    <ComboBoxItem Content="1" />
+                    <ComboBoxItem Content="2" />
+                    <ComboBoxItem Content="3" />
+                </ComboBox>
+            </StackPanel>
+            
+            <ui:Button x:Name="butNvxRenvedeur" Content="Nouveau Revendeur" VerticalAlignment="Top" Width="152"/>
+        <ui:Button x:Name="butModRevendeur" Content="Modifier Revendeur" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.394,0.604"/>
+        <ui:Button x:Name="butCommander" Content="Commander le panier" VerticalAlignment="Top" Width="170" Background="#FF0047C8" Foreground="#E4FFFFFF"/>
+        <Label x:Name="labPrixTotal" Content="Total HT: 1200€" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Foreground="Black"/>
+        </StackPanel>
+        </Grid>
 </Page>

@@ -48,6 +48,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
         }
 
+       
+
+
         /// <summary>
         /// Loads the data. temporary.
         /// </summary>
