@@ -1,4 +1,6 @@
-﻿using Outil_Gestion_Pilot.ViewModels.Windows;
+﻿using Npgsql;
+using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
