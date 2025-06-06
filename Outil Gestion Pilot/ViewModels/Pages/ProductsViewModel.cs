@@ -13,6 +13,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         private ObservableCollection<Product> products;
 
         public ICollectionView ProductsView { get; set; }
+
         [ObservableProperty]
         private string searchCode;
 

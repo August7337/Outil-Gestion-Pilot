@@ -16,28 +16,45 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid VerticalAlignment="Top">
-        
+    <Grid VerticalAlignment="Top" >
+        <StackPanel >
+            <StackPanel Orientation="Horizontal" >
+            <StackPanel   Margin="0,0,20,0">
+                <Label>Nom Revendeur:</Label>
+                <ui:TextBox 
+                  Width="150"
+                  PlaceholderText="Entrer un revendeur" 
+                  x:Name="searchResellerTxt" 
+                  Text="{Binding SearchReseller, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
 
-        
-            <DataGrid
+
+            </StackPanel>
+
+            <StackPanel>
+                <Label>Date commande :</Label>
+                <DatePicker 
+            Width="150"
+            SelectedDate="{Binding SelectedOrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+        </StackPanel>
+        <DataGrid
          x:Name="OrderDG"
          AutoGenerateColumns="False"
          IsReadOnly="True"
          ItemsSource="{Binding OrdersView}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
+            <DataGrid.Columns>
+                <DataGridTextColumn
                  Width="*"
                  Binding="{Binding Reseller}"
                  Header="Revendeur" />
-                    <DataGridTextColumn
+                <DataGridTextColumn
                  Width="*"
                  Binding="{Binding OrderDate}"
                  Header="Date" />
-                  
-                   
-                </DataGrid.Columns>
-            </DataGrid>
-        
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        </StackPanel>
     </Grid>
 </Page>
