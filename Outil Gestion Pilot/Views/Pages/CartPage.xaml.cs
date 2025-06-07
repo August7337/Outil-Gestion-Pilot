@@ -13,5 +13,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
             DataContext = ViewModel;
             InitializeComponent();
         }
+
+        private void butCommander_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
