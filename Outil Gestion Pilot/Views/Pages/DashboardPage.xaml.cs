@@ -1,5 +1,6 @@
 ﻿using Npgsql;
 using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.ViewModels.Pages;
 using Wpf.Ui.Abstractions.Controls;
 
@@ -8,8 +9,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
     public partial class DashboardPage : INavigableView<DashboardViewModel>
     {
         public DashboardViewModel ViewModel { get; }
+        private readonly SessionService sessionService;
 
-        public DashboardPage(DashboardViewModel viewModel)
+
+        public DashboardPage(DashboardViewModel viewModel, SessionService sessionService)
         {
             ViewModel = viewModel;
             DataContext = this;
@@ -26,6 +29,8 @@ namespace Outil_Gestion_Pilot.Views.Pages
             {
                 SqlTxt.Text = $"Erreur : {ex.Message}";
             }
+
+            LoginTxt.Text = sessionService.Login;
         }
     }
 }

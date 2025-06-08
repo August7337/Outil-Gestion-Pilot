@@ -33,6 +33,7 @@ namespace Outil_Gestion_Pilot
                 services.AddNavigationViewPageProvider();
 
                 services.AddHostedService<ApplicationHostService>();
+                services.AddSingleton<SessionService>();
 
                 // Theme manipulation
                 services.AddSingleton<IThemeService, ThemeService>();

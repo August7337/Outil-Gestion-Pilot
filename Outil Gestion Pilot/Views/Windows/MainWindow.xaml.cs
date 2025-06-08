@@ -1,5 +1,7 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
@@ -23,13 +25,19 @@ namespace Outil_Gestion_Pilot.Views.Windows
 
             SystemThemeWatcher.Watch(this);
 
-            InitializeComponent();
-            ConnectionWindow connectionWindow = new ConnectionWindow();
-            connectionWindow.ShowDialog();
+            SessionService sessionService = App.Services.GetRequiredService<SessionService>();
+            ConnectionWindow connectionWindow = new ConnectionWindow(sessionService);
+            bool? result = connectionWindow.ShowDialog();
+            if (result != true)
+                Environment.Exit(0);
 
+            InitializeComponent();
+            
             SetPageService(navigationViewPageProvider);
 
             navigationService.SetNavigationControl(RootNavigation);
+
+            
         }
 
         #region INavigationWindow methods

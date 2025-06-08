@@ -17,6 +17,12 @@
     mc:Ignorable="d">
 
     <Grid>
-        <TextBlock x:Name="SqlTxt">...</TextBlock>
+        <StackPanel>
+            <TextBlock x:Name="SqlTxt">...</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,10,0">Utilisateur :</TextBlock>
+                <TextBlock x:Name="LoginTxt">...</TextBlock>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

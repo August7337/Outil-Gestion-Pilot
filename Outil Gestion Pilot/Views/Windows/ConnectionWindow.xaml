@@ -26,25 +26,28 @@
             Grid.Row="0"
             CloseWindowByDoubleClickOnIcon="True">
             <ui:TitleBar.Icon>
-                <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png" />
+                <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png"/>
             </ui:TitleBar.Icon>
         </ui:TitleBar>
         <StackPanel VerticalAlignment="Center" Width="260" Cursor="">
             <ui:TextBlock Text="Connexion"
                        FontSize="24"
                        FontWeight="Bold"
-                       HorizontalAlignment="Center" Margin="0,0,0,30" />
+                       HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
             <Label Target="{Binding ElementName=usernameBox}">_Identifiant</Label>
             <ui:TextBox x:Name="usernameBox" Margin="0,0,0,10" ></ui:TextBox>
             
             <Label Target="{Binding ElementName=passwordBox}">_Mot de passe</Label>
-            <ui:PasswordBox x:Name="passwordBox" Margin="0,0,0,30"/>
+            <ui:PasswordBox x:Name="passwordBox" Margin="0,0,0,15"/>
 
+            <TextBlock x:Name="ErrorTxt"
+                       Foreground="#E4FF1E1E"
+                       Margin="0,0,0,15"/>
 
             <ui:Button Content="Se Connecter"
                        Padding="10"
-                       Click="Button_Click" 
+                       Click="Validation_Click" 
                        HorizontalAlignment="Center" IsDefault="True"/>
         </StackPanel>
     </Grid>
