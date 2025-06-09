@@ -7,8 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="CartPage"
-    d:DataContext="{d:DesignInstance local:CartPage,
-                                 IsDesignTimeCreatable=False}"
+    d:DataContext="{d:DesignInstance local:CartPage,IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
@@ -28,7 +27,11 @@
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Prix :</Label>
-                    <ui:NumberBox MinWidth="100" />
+                    <ui:TextBox x:Name="searchPriceTxt" 
+                        PlaceholderText="Entrer un prix" 
+                        MinWidth="100"
+                        Text="{Binding SearchPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        />
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Quantité :</Label>
@@ -90,9 +93,9 @@
                 </ComboBox>
             </StackPanel>
 
-            <ui:Button x:Name="butNvxRenvedeur" Content="Nouveau Revendeur" VerticalAlignment="Top" Width="150" Margin="25,23,0,0" Height="35"/>
+            <ui:Button x:Name="butNvxRenvedeur" Content="Nouveau Revendeur" VerticalAlignment="Top" Width="150" Margin="25,23,0,0" Height="35" Click="butNvxRenvedeur_Click"/>
             <ui:Button x:Name="butModRevendeur" Content="Modifier Revendeur" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.394,0.604" Margin="25,23,0,0" Height="35"/>
-            <Label x:Name="labPrixTotal" Content="Total HT: 1200€" Width="109" Foreground="Black" Margin="25,30,0,0" FontSize="24"/>
+            <Label x:Name="labPrixTotal" Content="Total HT: 1200€" Width="109"  Margin="25,30,0,0" FontSize="24"/>
             <ui:Button x:Name="butCommander" Content="Commander le panier" VerticalAlignment="Top" Width="170" Background="#FF0047C8" Foreground="#E4FFFFFF" Margin="30,23,0,0" Height="35" Click="butCommander_Click"/>
         </StackPanel>
     </Grid>
