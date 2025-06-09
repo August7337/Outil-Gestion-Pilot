@@ -4,6 +4,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using System.DirectoryServices;
 using System.Windows.Data;
+using Outil_Gestion_Pilot.Views.Windows;
+using Microsoft.Extensions.DependencyInjection;
+using Outil_Gestion_Pilot.Services;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -23,7 +26,30 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             CartView = CollectionViewSource.GetDefaultView(Carts);
             CartView.Filter = CodeSearch;
+            CartView.Filter = PriceSearch;
+
         }
+
+        private string searchPriceText;
+        public string SearchPriceText
+        {
+            get => searchPriceText;
+            set
+            {
+                searchPriceText = value;
+
+                if (double.TryParse(value, out double price)) // Vérifie si la conversion est valide
+                {
+                    SearchPrice = price; // Met à jour la vraie valeur numérique
+                    CartView.Refresh(); // Rafraîchit la liste filtrée
+                }
+
+                OnPropertyChanged(nameof(SearchPriceText)); // Notifie la vue du changement
+            }
+        }
+
+        [ObservableProperty]
+        private double searchPrice; // La vraie valeur numérique utilisée pour le filtrage
 
         /// <summary>
         /// Refreshes the data grid when the function is called.
@@ -48,7 +74,25 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
         }
 
-       
+        /// <summary>
+        /// Refreshes the data grid when the function is called.
+        /// </summary>
+        /// <param name="value"></param>
+        partial void OnSearchPriceChanged(double value)
+        {
+            CartView.Refresh();
+        }
+
+        private bool PriceSearch(object obj)
+        {
+            if (obj is not Product product) return false;
+            if (double.IsNaN(SearchPrice) || SearchPrice <= 0)
+                return true; // Affiche tous les produits si aucun prix valide n'est saisi.
+
+            return product.SellingPrice >= SearchPrice; 
+        }
+
+
 
 
         /// <summary>
@@ -99,6 +143,13 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         public void AddProduct(Product product)
         {
             Carts.Add(product);
+        }
+
+        public void butNvxRenvedeur_Click(object sender, EventArgs e)
+        {
+            DealerWindow dealerWindow = new DealerWindow();
+            dealerWindow.ShowDialog();
+
         }
     }
 }
