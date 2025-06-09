@@ -35,7 +35,12 @@
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Quantité :</Label>
-                    <ui:NumberBox MinWidth="100" />
+                    <ui:TextBox x:Name="searchQteTxt" 
+                        MinWidth="100"
+                        PlaceholderText="Entrer une quantité"
+                        Text="{Binding SearchQteText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        
+                                  />
                 </StackPanel>
 
             </StackPanel>
