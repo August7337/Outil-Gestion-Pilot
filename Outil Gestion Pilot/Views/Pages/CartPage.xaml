@@ -71,6 +71,10 @@
                         Width="*"
                         Binding="{Binding Stock}"
                         Header="Quantité stocks" />
+                    <DataGridTextColumn
+                        Width="*"
+                        Binding="{Binding DesiredQuantity }"
+                        Header="Quantité" />
 
                 </DataGrid.Columns>
             </DataGrid>

@@ -22,6 +22,7 @@ namespace Outil_Gestion_Pilot.Models
         private double sellingPrice;
         private int stock;
         private List<ProductColor> color;
+        private int desiredQuantity;
 
         public Product()
         {
@@ -112,6 +113,19 @@ namespace Outil_Gestion_Pilot.Models
                     return "Aucune";
 
                 return string.Join(", ", color.Select(c => c.ToString()));
+            }
+        }
+
+        public int DesiredQuantity
+        {
+            get
+            {
+                return this.desiredQuantity;
+            }
+
+            set
+            {
+                this.desiredQuantity = value;
             }
         }
 

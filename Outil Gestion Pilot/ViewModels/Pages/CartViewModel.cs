@@ -7,6 +7,7 @@ using System.Windows.Data;
 using Outil_Gestion_Pilot.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Outil_Gestion_Pilot.Services;
+using Outil_Gestion_Pilot.Views.Pages;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -164,7 +165,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             if (SearchQte <= 0)
                 return true; // Return all the products if the Textbox is empty
 
-            return product.Stock == SearchQte;
+            return product.DesiredQuantity == SearchQte;
         }
 
 
@@ -183,7 +184,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Tipe = ProductTipe.Epaisse,
                 SellingPrice = 25.99,
                 Stock = 100,
-                Color = new List<ProductColor> { ProductColor.Noire }
+                Color = new List<ProductColor> { ProductColor.Noire },
+                DesiredQuantity = 20
             });
 
             Carts.Add(new Product
@@ -196,7 +198,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Tipe = ProductTipe.Fine,
                 SellingPrice = 45.50,
                 Stock = 50,
-                Color = new List<ProductColor> { ProductColor.Vert }
+                Color = new List<ProductColor> { ProductColor.Vert },
+                DesiredQuantity = 200
             });
 
             Carts.Add(new Product
@@ -209,7 +212,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Tipe = ProductTipe.Moyenne,
                 SellingPrice = 15.75,
                 Stock = 200,
-                Color = new List<ProductColor> { ProductColor.Bleu, ProductColor.Vert }
+                Color = new List<ProductColor> { ProductColor.Bleu, ProductColor.Vert },
+                DesiredQuantity = 100
             });
         }
 
@@ -218,6 +222,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             Carts.Add(product);
         }
 
+        public double ResolvePriceTTC() // a terminer
+        {
+            double price = 0;
+            return price;
+
+        }
         public void butNvxRenvedeur_Click(object sender, EventArgs e)
         {
             DealerWindow dealerWindow = new DealerWindow();

@@ -23,5 +23,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
         {
             ViewModel.butNvxRenvedeur_Click(sender, e);
         }
+
+        public void SetPriceTTC()
+        {
+            labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC() + "€"; //Provoque une erreur pour le moment 
+        }
     }
 }
