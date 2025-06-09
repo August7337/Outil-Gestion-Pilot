@@ -63,7 +63,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Name = "Produit 1",
                 Category = ProductCategory.Bureau,
                 Type = ProductType.Bille,
-                Tipe = ProductTipe.Grosse,
+                Tipe = ProductTipe.Epaisse,
                 SellingPrice = 25.99,
                 Stock = 100,
                 Color = new List<ProductColor> { ProductColor.Noire }
@@ -75,7 +75,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Code = "P002",
                 Name = "Produit 2",
                 Category = ProductCategory.Bureau,
-                Type = ProductType.Frixion_Ball,
+                Type = ProductType.Plume,
                 Tipe = ProductTipe.Fine,
                 SellingPrice = 45.50,
                 Stock = 50,
