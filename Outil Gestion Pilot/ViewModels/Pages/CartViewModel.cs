@@ -222,9 +222,13 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             Carts.Add(product);
         }
 
-        public double ResolvePriceTTC() // a terminer
+        public double ResolvePriceTTC() 
         {
             double price = 0;
+            foreach (Product aproduct in Carts)
+            {
+                price += aproduct.DesiredQuantity;
+            }
             return price;
 
         }
