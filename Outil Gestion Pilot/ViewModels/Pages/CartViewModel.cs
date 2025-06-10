@@ -8,6 +8,7 @@ using Outil_Gestion_Pilot.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.Views.Pages;
+using Outil_Gestion_Pilot.ViewModels.Windows;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -232,6 +233,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return price;
 
         }
+
         public void butNvxRenvedeur_Click(object sender, EventArgs e)
         {
             DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Créer);

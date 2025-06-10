@@ -1,4 +1,6 @@
-﻿using Outil_Gestion_Pilot.ViewModels.Pages;
+﻿using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.ViewModels.Pages;
+using Outil_Gestion_Pilot.ViewModels.Windows;
 using System.Windows.Interop;
 using Wpf.Ui.Abstractions.Controls;
 
@@ -14,13 +16,14 @@ namespace Outil_Gestion_Pilot.Views.Pages
             DataContext = ViewModel;
             InitializeComponent();
             SetPriceTTC();
-
+            
         }
         public void SetPriceTTC()
         {
             labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString() + "€";
         }
 
+       
         private void butCommander_Click(object sender, RoutedEventArgs e)
         {
 
@@ -36,6 +39,8 @@ namespace Outil_Gestion_Pilot.Views.Pages
         private void butModRevendeur_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.butModifyRenvedeur_Click(sender, e);
+
+            
         }
     }
 }

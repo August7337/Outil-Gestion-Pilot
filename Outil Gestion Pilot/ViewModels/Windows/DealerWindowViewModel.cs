@@ -2,7 +2,10 @@
 using Outil_Gestion_Pilot.Models;
 using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.Views.Windows;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Data;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
 
@@ -10,43 +13,55 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 {
     public partial class DealerWindowViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private ObservableCollection<Reseller> dealers;
         private readonly SessionService sessionService;
+
+        public ICollectionView DealerView { get; set; }
 
         public DealerWindowViewModel(SessionService sessionService)
         {
             this.sessionService = sessionService;
         }
 
-        /// <summary>
-        /// Attempts to authenticate a user by verifying the credentials against the database.
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        /// <returns>
-        /// The username if authentication is successful;
-        /// otherwise, an error or informational message indicating the failure.
-        /// </returns>
-        public string Connection(string username, string password)
+
+        public DealerWindowViewModel()
         {
-            string message;
+            Dealers = new ObservableCollection<Reseller>();
+            LoadSampleReseller();
 
-            try
-            {
-                var cmd = new NpgsqlCommand("SELECT login FROM employe WHERE login = '" + username + "' AND password = '" + password + "';");
-                object result = DataAccess.Instance.ExecuteSelectUneValeur(cmd);
-                if (result != null)
-                {
-                    sessionService.Login = result.ToString();
-                    return result.ToString();
-                }
-                else message = "Informations incorrects";
-            }
-            catch (Exception ex)
-            {
-                message = $"Erreur : {ex.Message}";
-            }
+            DealerView = CollectionViewSource.GetDefaultView(Dealers);
 
-            return message;
+        }
+
+        private void LoadSampleReseller()
+        {
+            Dealers.Add(new Reseller
+            {
+                NumeroRevendeur = 1,
+                RaisonSociale = "SAS Carrefour",
+                Rue = "9 rue de l'arc en ciel",
+                Cp = "74000",
+                Ville = "Annecy"
+            });
+
+            Dealers.Add(new Reseller
+            {
+                NumeroRevendeur = 2,
+                RaisonSociale = "Super U",
+                Rue = "2 chemin du fier",
+                Cp = "38110",
+                Ville = "Grenoble"
+            });
+
+            Dealers.Add(new Reseller
+            {
+                NumeroRevendeur = 3,
+                RaisonSociale = "Intermarché Lugrin",
+                Rue = "ZAC des crets",
+                Cp = "74500",
+                Ville = "Lugrin"
+            });
         }
     }
 }

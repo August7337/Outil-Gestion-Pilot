@@ -20,8 +20,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public OrdersViewModel()
          {
-             Orders = new ObservableCollection<Order>();
-             LoadSampleOrders();
+             Orders = new ObservableCollection<Order>(new Order().FindAll());
             OrdersView = CollectionViewSource.GetDefaultView(Orders);
             OrdersView.Filter = ResellerSearch;
         }
@@ -48,21 +47,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return order.Reseller.StartsWith(SearchReseller, StringComparison.OrdinalIgnoreCase);
         }
-        private void LoadSampleOrders()
-         {
-             Orders.Add(new Order
-             {
-                 Reseller = "CASINO Lyon",
-                 OrderDate = new DateTime(2025, 5, 23, 11, 55, 0),
-             });
-
-             Orders.Add(new Order
-             {
-                 Reseller = "CASINO Paris",
-                 OrderDate = DateTime.Now,
-
-             });
-         }
+       
         public void AddProduct(Order order)
         {
             Orders.Add(order);

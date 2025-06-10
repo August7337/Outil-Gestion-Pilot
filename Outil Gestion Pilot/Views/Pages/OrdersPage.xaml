@@ -19,42 +19,45 @@
     <Grid VerticalAlignment="Top" >
         <StackPanel >
             <StackPanel Orientation="Horizontal" >
-            <StackPanel   Margin="0,0,20,0">
-                <Label>Nom Revendeur:</Label>
-                <ui:TextBox 
+                <StackPanel   Margin="0,0,20,0">
+                    <Label>Nom Revendeur:</Label>
+                    <ui:TextBox 
                   Width="150"
                   PlaceholderText="Entrer un revendeur" 
                   x:Name="searchResellerTxt" 
                   Text="{Binding SearchReseller, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
 
 
-            </StackPanel>
+                </StackPanel>
 
-            <StackPanel>
-                <Label>Date commande :</Label>
-                <DatePicker 
+                <StackPanel>
+                    <Label>Date commande :</Label>
+                    <DatePicker 
             Width="150"
             SelectedDate="{Binding SelectedOrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-        <DataGrid
+            <DataGrid
          x:Name="OrderDG"
          AutoGenerateColumns="False"
          IsReadOnly="True"
          ItemsSource="{Binding OrdersView}">
-            <DataGrid.Columns>
-                <DataGridTextColumn
+                <DataGrid.Columns>
+                    <DataGridTextColumn
                  Width="*"
                  Binding="{Binding Reseller}"
                  Header="Revendeur" />
-                <DataGridTextColumn
+                    <DataGridTextColumn
                  Width="*"
                  Binding="{Binding OrderDate}"
                  Header="Date" />
-
-
-            </DataGrid.Columns>
-        </DataGrid>
+                    <DataGridTextColumn
+                 Width="*"
+                 Binding="{Binding Delivery }"
+                 Header="Mode livraison" />
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
+        <ui:Button x:Name="but_visualiser"  Margin="435,10,0,0" VerticalAlignment="Top" FontFamily="Segoe MDL2 Assets" Content="&#xE7B3;" ToolTip="Voir" Height="44" Width="57" Click="but_visualiser_Click"/>
     </Grid>
 </Page>
