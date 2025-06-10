@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using Outil_Gestion_Pilot.Models.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,34 +7,27 @@ using System.Linq;
 
 namespace Outil_Gestion_Pilot.Models
 {
-    public enum ProductCategory { Bureau, Loisir }
-    public enum ProductType { Bille, Roller_gel, Roller_liquide, Plume, Feutre }
-    public enum ProductTipe { Fine, Moyenne, Epaisse}
-    public enum ProductColor { Bleu, Vert, Rouge, Noire }
-
     public class Product
     {
         private string imagePath;
         private string code;
         private string name;
-        private ProductCategory category;
-        private ProductType type;
-        private ProductTipe tipe;
+        private Attributes.Type type;
+        private Tipe tipe;
         private double sellingPrice;
         private int stock;
-        private List<ProductColor> color;
+        private List<Color> color;
         private int desiredQuantity;
 
         public Product()
         {
         }
 
-        public Product(string imagePath, string code, string name, ProductCategory category, ProductType type, ProductTipe tipe, double sellingPrice, int stock, List<ProductColor> color)
+        public Product(string imagePath, string code, string name, Attributes.Type type, Tipe tipe, double sellingPrice, int stock, List<Color> color)
         {
             this.ImagePath = imagePath;
             this.Code = code;
             this.Name = name;
-            this.Category = category;
             this.Type = type;
             this.Tipe = tipe;
             this.SellingPrice = sellingPrice;
@@ -45,6 +39,11 @@ namespace Outil_Gestion_Pilot.Models
         {
             get { return this.imagePath; }
             set { this.imagePath = value; }
+        }
+
+        public Category Category
+        {
+            get { return this.type.Category; }
         }
 
         public string Code
@@ -59,19 +58,13 @@ namespace Outil_Gestion_Pilot.Models
             set { this.name = value; }
         }
 
-        public ProductCategory Category
-        {
-            get { return this.category; }
-            set { this.category = value; }
-        }
-
-        public ProductType Type
+        public Attributes.Type Type
         {
             get { return this.type; }
             set { this.type = value; }
         }
 
-        public ProductTipe Tipe
+        public Tipe Tipe
         {
             get { return this.tipe; }
             set { this.tipe = value; }
@@ -99,7 +92,7 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public List<ProductColor> Color
+        public List<Color> Color
         {
             get { return this.color; }
             set { this.color = value; }
@@ -137,25 +130,39 @@ namespace Outil_Gestion_Pilot.Models
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
                 {
-                    ProductType type = new ProductType();
-                    ProductTipe tipe = new ProductTipe();
+                    List<Color> colors = FindColors((string)dr["codeproduit"]);
 
                     products.Add(
                         new Product(
-                            "à implémenter", // To do
+                            "à implémenter",
                             (string)dr["codeproduit"],
                             (string)dr["nomproduit"],
-                            ProductCategory.Bureau, // To do
-                            (ProductType)((int)dr["numtype"] - 1), // To modify
-                            (ProductTipe)((int)dr["numtypepointe"] - 1), // To modify
+                            Attributes.Type.FindAll()[(int)dr["numtype"] - 1],
+                            Tipe.FindAll()[(int)dr["numtypepointe"] - 1],
                             Convert.ToDouble(dr["prixvente"]), 
                             (int)dr["quantitestock"],
-                            new List<ProductColor>() // To do
+                            FindColors((string)dr["codeproduit"])
                         )
                     );
                 }
             }
             return products;
+        }
+
+        private List<Color> FindColors(string v)
+        {
+            List<Color> colors = new List<Color>();
+
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT c.libellecouleur\r\nFROM produit p\r\nJOIN couleurproduit cp ON p.numproduit = cp.numproduit\r\nJOIN couleur c ON cp.numcouleur = c.numcouleur\r\nWHERE p.codeproduit = '" + v + "';"))
+            {
+                DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    Color findedColor = Attributes.Color.Colors.Find(c => c.Name == dr["libellecouleur"].ToString());
+                    colors.Add(findedColor);
+                }
+            }
+            return colors;
         }
     }
 }

@@ -8,6 +8,7 @@ using Outil_Gestion_Pilot.Views.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.Views.Pages;
+using Outil_Gestion_Pilot.Models.Attributes;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -179,12 +180,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 ImagePath = "/Images/product1.jpg",
                 Code = "P001",
                 Name = "Produit 1",
-                Category = ProductCategory.Bureau,
-                Type = ProductType.Bille,
-                Tipe = ProductTipe.Epaisse,
+                Type = Models.Attributes.Type.FindAll()[0],
+                Tipe = Tipe.FindAll()[0],
                 SellingPrice = 25.99,
                 Stock = 100,
-                Color = new List<ProductColor> { ProductColor.Noire },
+                Color = Models.Attributes.Color.FindAll(),
                 DesiredQuantity = 20
             });
 
@@ -193,12 +193,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 ImagePath = "/Images/product2.jpg",
                 Code = "P002",
                 Name = "Produit 2",
-                Category = ProductCategory.Bureau,
-                Type = ProductType.Plume,
-                Tipe = ProductTipe.Fine,
+                Type = Models.Attributes.Type.FindAll()[1],
+                Tipe = Tipe.FindAll()[1],
                 SellingPrice = 45.50,
                 Stock = 50,
-                Color = new List<ProductColor> { ProductColor.Vert },
+                Color = Models.Attributes.Color.FindAll(),
                 DesiredQuantity = 200
             });
 
@@ -207,12 +206,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 ImagePath = "/Images/product3.jpg",
                 Code = "P003",
                 Name = "Produit 3",
-                Category = ProductCategory.Loisir,
-                Type = ProductType.Roller_gel,
-                Tipe = ProductTipe.Moyenne,
+                Type = Models.Attributes.Type.FindAll()[2],
+                Tipe = Tipe.FindAll()[2],
                 SellingPrice = 15.75,
                 Stock = 200,
-                Color = new List<ProductColor> { ProductColor.Bleu, ProductColor.Vert },
+                Color = Models.Attributes.Color.FindAll(),
                 DesiredQuantity = 100
             });
         }
