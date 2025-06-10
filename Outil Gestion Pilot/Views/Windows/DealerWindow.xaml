@@ -30,15 +30,15 @@
             </ui:TitleBar.Icon>
         </ui:TitleBar>
         <Label Content="Numéro revendeur" Margin="0,20,0,0" Width="200"/>
-        <ui:TextBox x:Name="box_Num" TextWrapping="Wrap" Text="TextBox" Width="200"/>
+        <ui:TextBox x:Name="box_Num" TextWrapping="Wrap" Text="" Width="200"/>
         <Label Content="Raison sociale" Width="200"/>
-        <ui:TextBox x:Name="box_RS" TextWrapping="Wrap" Text="TextBox" Width="200"/>
+        <ui:TextBox x:Name="box_RS" TextWrapping="Wrap" Text="" Width="200"/>
         <Label Content="Rue" Width="200"/>
-        <ui:TextBox x:Name="box_Rue" TextWrapping="Wrap" Text="TextBox" Width="200"/>
+        <ui:TextBox x:Name="box_Rue" TextWrapping="Wrap" Text="" Width="200"/>
         <Label Content="Code postal" Width="200"/>
-        <ui:TextBox x:Name="box_CP" TextWrapping="Wrap" Text="TextBox" Width="200"/>
+        <ui:TextBox x:Name="box_CP" TextWrapping="Wrap" Text="" Width="200"/>
         <Label Content="Ville" Width="200"/>
-        <ui:TextBox x:Name="box_Ville" TextWrapping="Wrap" Text="TextBox" Width="200"/>
+        <ui:TextBox x:Name="box_Ville" TextWrapping="Wrap" Text="" Width="200"/>
         <ui:Button x:Name="but_Revendeur" Content="Ajouter revendeur" HorizontalAlignment="Center" Margin="0,20,0,0" Width="150" Background="#FF3A46FF" Foreground="#E4FFFFFF"/>
     </StackPanel>
 </ui:FluentWindow>

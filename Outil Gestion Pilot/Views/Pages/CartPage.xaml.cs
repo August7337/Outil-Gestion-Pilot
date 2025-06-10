@@ -16,6 +16,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
             SetPriceTTC();
 
         }
+        public void SetPriceTTC()
+        {
+            labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString() + "€";
+        }
 
         private void butCommander_Click(object sender, RoutedEventArgs e)
         {
@@ -27,9 +31,11 @@ namespace Outil_Gestion_Pilot.Views.Pages
             ViewModel.butNvxRenvedeur_Click(sender, e);
         }
 
-        public void SetPriceTTC()
+        
+
+        private void butModRevendeur_Click(object sender, RoutedEventArgs e)
         {
-            labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString() + "€";  
+            ViewModel.butModifyRenvedeur_Click(sender, e);
         }
     }
 }
