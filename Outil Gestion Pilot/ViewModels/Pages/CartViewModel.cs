@@ -220,15 +220,25 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             Carts.Add(product);
         }
 
-        public double ResolvePriceTTC() // a terminer
+        public double ResolvePriceTTC() 
         {
             double price = 0;
+            foreach (Product aproduct in Carts)
+            {
+                price += aproduct.DesiredQuantity;
+            }
             return price;
 
         }
         public void butNvxRenvedeur_Click(object sender, EventArgs e)
         {
-            DealerWindow dealerWindow = new DealerWindow();
+            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Créer);
+            dealerWindow.ShowDialog();
+
+        }
+        public void butModifyRenvedeur_Click(object sender, EventArgs e)
+        {
+            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Modifier);
             dealerWindow.ShowDialog();
 
         }
