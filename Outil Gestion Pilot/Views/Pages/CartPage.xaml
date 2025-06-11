@@ -30,17 +30,14 @@
                     <ui:TextBox x:Name="searchPriceTxt" 
                         PlaceholderText="Entrer un prix" 
                         MinWidth="100"
-                        Text="{Binding SearchPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        />
+                        Text="{Binding SearchPriceText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Quantité :</Label>
                     <ui:TextBox x:Name="searchQteTxt" 
                         MinWidth="100"
                         PlaceholderText="Entrer une quantité"
-                        Text="{Binding SearchQteText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                        
-                                  />
+                        Text="{Binding SearchQteText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
             </StackPanel>
@@ -53,38 +50,42 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding ImagePath}"
+                        Binding="{Binding Product.ImagePath}"
                         Header="Image" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Code}"
+                        Binding="{Binding Product.Code}"
                         Header="Code Produit" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Name}"
+                        Binding="{Binding Product.Name}"
                         Header="Nom produit" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding SellingPrice, StringFormat={}{0:N2} €}"
+                        Binding="{Binding Product.SellingPrice, StringFormat={}{0:N2} €}"
                         Header="Prix vente" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding Stock}"
+                        Binding="{Binding Product.Stock}"
                         Header="Quantité stocks" />
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding DesiredQuantity }"
+                        Binding="{Binding Product.DesiredQuantity }"
                         Header="Quantité" />
-
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Margin="0,350,0,0" >
             <StackPanel />
             <StackPanel>
                 <Label x:Name="labLivraison" Content="Mode de livraison" Margin="5,0,0,0" />
                 <ComboBox x:Name="lstLivraison"
-    SelectedIndex="0" VerticalAlignment="Top" Margin="5,0,0,0" Width="100" Height="35" >
+                    SelectedIndex="0" 
+                    VerticalAlignment="Top" 
+                    Margin="5,0,0,0" 
+                    Width="100" 
+                    Height="35" >
                     <ComboBoxItem Content="A" />
                     <ComboBoxItem Content="B" />
                     <ComboBoxItem Content="C" />
@@ -93,9 +94,17 @@
 
             <StackPanel/>
             <StackPanel>
-                <Label x:Name="labRevendeur" Content="Revendeur" RenderTransformOrigin="0.466,0.509" Margin="25,0,0,0"/>
+                <Label 
+                    x:Name="labRevendeur" 
+                    Content="Revendeur" 
+                    RenderTransformOrigin="0.466,0.509" 
+                    Margin="25,0,0,0"/>
                 <ComboBox x:Name="lstRevendeur"
-    SelectedIndex="0" RenderTransformOrigin="0.187,0.38" Margin="25,0,0,0" Width="150" Height="35" >
+                    SelectedIndex="0" 
+                    RenderTransformOrigin="0.187,0.38" 
+                    Margin="25,0,0,0" 
+                    Width="150" 
+                    Height="35" >
                     <ComboBoxItem Content="1" />
                     <ComboBoxItem Content="2" />
                     <ComboBoxItem Content="3" />

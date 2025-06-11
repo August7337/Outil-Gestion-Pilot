@@ -15,8 +15,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
     public partial class CartViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private ObservableCollection<Product> carts;
+        public ObservableCollection<OrderedProduct> Carts => Cart.Products;
 
         public ICollectionView CartView { get; set; }
         [ObservableProperty]
@@ -24,12 +23,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public CartViewModel()
         {
-            Carts = new ObservableCollection<Product>();
-            LoadSampleProducts();
-
-            CartView = CollectionViewSource.GetDefaultView(Carts);
+            CartView = CollectionViewSource.GetDefaultView(Cart.Products);
             CartView.Filter = CombinedFilter;
-
         }
 
         /// <summary>
@@ -39,12 +34,13 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         /// <returns></returns>
         private bool CombinedFilter(object item)
         {
-            if (item is Product product)
+            if (item is OrderedProduct ordered)
             {
-                return CodeSearch(product) && PriceSearch(product) && QteSearch(product);
+                return CodeSearch(ordered) && PriceSearch(ordered) && QteSearch(ordered);
             }
             return false;
         }
+
 
 
         /// <summary>
@@ -54,12 +50,13 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         /// <returns></returns>
         private bool CodeSearch(object obj)
         {
-            if (obj is not Product product) return false;
+            if (obj is not OrderedProduct ordered) return false;
             if (string.IsNullOrWhiteSpace(SearchCode))
                 return true;
 
-            return product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
+            return ordered.Product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
         }
+
         /// <summary>
         /// Refreshes the data grid when the function is called.
         /// </summary>
@@ -68,8 +65,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             CartView.Refresh();
         }
-
-
 
         /// <summary>
         /// Filter of SellingPrice
@@ -80,7 +75,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             get => searchPriceText;
             set
             {
-                
                 searchPriceText = value;
 
                 if (string.IsNullOrWhiteSpace(SearchPriceText))
@@ -99,14 +93,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                     }
                 }
                 
-
                 OnPropertyChanged(nameof(SearchPriceText)); 
             }
         }
 
         [ObservableProperty]
         private double searchPrice; // This variable is used in the SearchPrice method, type: double
-
 
         /// <summary>
         /// Refreshes the data grid when the function is called.
@@ -119,11 +111,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         private bool PriceSearch(object obj)
         {
-            if (obj is not Product product) return false;
+            if (obj is not OrderedProduct ordered) return false;
             if (SearchPrice <= 0)
-                return true; // Return all the products if the Textbox is empty 
+                return true;
 
-            return product.SellingPrice == SearchPrice; 
+            return ordered.Product.SellingPrice == SearchPrice;
         }
 
         /// <summary>
@@ -153,6 +145,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 OnPropertyChanged(nameof(SearchQteText)); 
             }
         }
+
         [ObservableProperty]
         private double searchQte; // This variable is used in the SearchQte method, type: double
 
@@ -163,70 +156,19 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         private bool QteSearch(object obj)
         {
-            if (obj is not Product product) return false;
+            if (obj is not OrderedProduct ordered) return false;
             if (SearchQte <= 0)
-                return true; // Return all the products if the Textbox is empty
+                return true;
 
-            return product.DesiredQuantity == SearchQte;
-        }
-
-
-        /// <summary>
-        /// Loads the data. temporary.
-        /// </summary>
-        private void LoadSampleProducts()
-        {
-            Carts.Add(new Product
-            {
-                ImagePath = "/Images/product1.jpg",
-                Code = "P001",
-                Name = "Produit 1",
-                Type = Models.Attributes.Type.FindAll()[0],
-                Tipe = Tipe.FindAll()[0],
-                SellingPrice = 25.99,
-                Stock = 100,
-                Color = Models.Attributes.Color.FindAll(),
-                DesiredQuantity = 20
-            });
-
-            Carts.Add(new Product
-            {
-                ImagePath = "/Images/product2.jpg",
-                Code = "P002",
-                Name = "Produit 2",
-                Type = Models.Attributes.Type.FindAll()[1],
-                Tipe = Tipe.FindAll()[1],
-                SellingPrice = 45.50,
-                Stock = 50,
-                Color = Models.Attributes.Color.FindAll(),
-                DesiredQuantity = 200
-            });
-
-            Carts.Add(new Product
-            {
-                ImagePath = "/Images/product3.jpg",
-                Code = "P003",
-                Name = "Produit 3",
-                Type = Models.Attributes.Type.FindAll()[2],
-                Tipe = Tipe.FindAll()[2],
-                SellingPrice = 15.75,
-                Stock = 200,
-                Color = Models.Attributes.Color.FindAll(),
-                DesiredQuantity = 100
-            });
-        }
-
-        public void AddProduct(Product product)
-        {
-            Carts.Add(product);
+            return ordered.Product.DesiredQuantity == SearchQte;
         }
 
         public double ResolvePriceTTC() 
         {
             double price = 0;
-            foreach (Product aproduct in Carts)
+            foreach (OrderedProduct aproduct in Carts)
             {
-                price += aproduct.DesiredQuantity;
+                price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
             return price;
 

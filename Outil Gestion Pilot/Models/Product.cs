@@ -9,6 +9,8 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Product
     {
+        public static List<Product> Products = Product.FindAll();
+
         private string imagePath;
         private string code;
         private string name;
@@ -122,7 +124,7 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public List<Product> FindAll()
+        public static List<Product> FindAll()
         {
             List<Product> products = new List<Product>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("select * from produit;"))
@@ -149,7 +151,7 @@ namespace Outil_Gestion_Pilot.Models
             return products;
         }
 
-        private List<Color> FindColors(string v)
+        private static List<Color> FindColors(string v)
         {
             List<Color> colors = new List<Color>();
 

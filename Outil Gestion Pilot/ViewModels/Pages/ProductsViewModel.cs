@@ -4,23 +4,31 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using System.DirectoryServices;
 using System.Windows.Data;
+using System.Diagnostics;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
     public partial class ProductsViewModel : ObservableObject
     {
+        private List<Product> products;
+
         [ObservableProperty]
-        private ObservableCollection<Product> products;
+        private Product selectedProduct;
+
 
         public ICollectionView ProductsView { get; set; }
+
+        public List<Product> Products
+        {
+            get { return Product.Products; }
+            set { Product.Products = value; }
+        }
 
         [ObservableProperty]
         private string searchCode;
 
         public ProductsViewModel()
         {
-            Products = new ObservableCollection<Product>(new Product().FindAll());
-
             ProductsView = CollectionViewSource.GetDefaultView(Products);
             ProductsView.Filter = CodeSearch;
         }
@@ -35,7 +43,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         }
 
         /// <summary>
-        /// finds the products in the product collection that starts with the text of the obj.
+        /// Finds the products in the product collection that starts with the text of the obj.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -46,6 +54,28 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 return true;
         
             return product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
+        }
+
+        internal void AddToCart()
+        {
+            if (SelectedProduct != null)
+            {
+                Cart.Products.Add(new OrderedProduct(10, 2, SelectedProduct));
+                foreach (OrderedProduct item in Cart.Products)
+                {
+                    Debug.WriteLine(item.Product.Name);
+                }
+            }
+            else
+            {
+                var uiMessageBox = new Wpf.Ui.Controls.MessageBox
+                {
+                    Title = "Pilot - Attention",
+                    Content = "Aucun produit sélectionné.",
+                };
+
+                uiMessageBox.ShowDialogAsync();
+            }
         }
     }
 }

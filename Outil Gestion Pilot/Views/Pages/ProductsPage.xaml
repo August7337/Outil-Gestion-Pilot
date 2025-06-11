@@ -80,12 +80,13 @@
                         IsChecked="True" />
                 </StackPanel>
             </StackPanel>
-            <ui:Button Margin="0,0,0,20">Ajouter au panier</ui:Button>
+            <ui:Button x:Name="CartBtn" Margin="0,0,0,20" Click="CartBtn_Click">Ajouter au panier</ui:Button>
             <DataGrid
                 x:Name="productsDG"
                 AutoGenerateColumns="False"
                 IsReadOnly="True"
-                ItemsSource="{Binding ProductsView}">
+                ItemsSource="{Binding ProductsView}"
+                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"

@@ -16,5 +16,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
             DataContext = ViewModel;
             InitializeComponent();
         }
+
+        private void CartBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.AddToCart();
+        }
     }
 }
