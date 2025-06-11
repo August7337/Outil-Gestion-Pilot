@@ -12,6 +12,7 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Order
     {
+        private int commandeId;
         private string reseller;
         private DateTime orderDate;
         private string delivery;
@@ -21,8 +22,9 @@ namespace Outil_Gestion_Pilot.Models
         {
         }
 
-        public Order(string reseller, DateTime orderDate, string delivery)
+        public Order(int commandeId, string reseller, DateTime orderDate, string delivery)
         {
+            this.CommandeId = commandeId;
             this.Reseller = reseller;
             this.OrderDate = orderDate;
             this.Delivery = delivery;
@@ -54,10 +56,23 @@ namespace Outil_Gestion_Pilot.Models
             set { this.products = value; }
         }
 
+        public int CommandeId
+        {
+            get
+            {
+                return this.commandeId;
+            }
+
+            set
+            {
+                this.commandeId = value;
+            }
+        }
+
         public List<Order> FindAll()
         {
             List<Order> orders = new List<Order>();
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT r.raisonsociale,c.datecommande,m.libelletransport  FROM commande c JOIN modetransport m ON c.numtransport = m.numtransport JOIN revendeur r ON c.numrevendeur = r.numrevendeur;"))
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT c.numcommande,r.raisonsociale,c.datecommande,m.libelletransport  FROM commande c JOIN modetransport m ON c.numtransport = m.numtransport JOIN revendeur r ON c.numrevendeur = r.numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
@@ -65,6 +80,7 @@ namespace Outil_Gestion_Pilot.Models
 
                     orders.Add(
                         new Order(
+                            Convert.ToInt32(dr["numcommande"]),
                             (string)dr["raisonsociale"],
                             Convert.ToDateTime(dr["datecommande"]),
                             (string)dr["libelletransport"]

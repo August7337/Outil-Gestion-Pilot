@@ -25,6 +25,14 @@ namespace Outil_Gestion_Pilot.Models
         {
         }
 
+        public Product(string imagePath, string code, string name, double sellingPrice)
+        {
+            this.ImagePath = imagePath;
+            this.Code = code;
+            this.Name = name;
+            this.SellingPrice = sellingPrice;
+        }
+
         public Product(string imagePath, string code, string name, Attributes.Type type, Tipe tipe, double sellingPrice, int stock, List<Color> color)
         {
             this.ImagePath = imagePath;
