@@ -2,6 +2,7 @@
 using Outil_Gestion_Pilot.ViewModels.Pages;
 using System.Collections.ObjectModel;
 using Wpf.Ui.Abstractions.Controls;
+using Wpf.Ui.Controls;
 
 
 namespace Outil_Gestion_Pilot.Views.Pages
@@ -19,6 +20,8 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         private void but_visualiser_Click(object sender, RoutedEventArgs e)
         {
+            Uri pageFunctionUri = new Uri("Views/Pages/OrderVisualisationPage.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(pageFunctionUri);
         }
     }
 }

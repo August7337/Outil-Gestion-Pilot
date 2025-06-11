@@ -15,7 +15,40 @@
  mc:Ignorable="d">
 
     <Grid>
-        <ui:Button Content="Button" Margin="320,0,0,0"/>
+        <ui:Button x:Name="but_Retour" Content="Retour" Margin="10,10,0,0" VerticalAlignment="Top" Click="but_Retour_Click"/>
+        <DataGrid
+x:Name="OrderVisuDG"
+AutoGenerateColumns="False"
+IsReadOnly="True"
+ItemsSource="{Binding ProductsView}" Margin="0,85,0,102">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding ImagePath}"
+        Header="Image" />
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding Code}"
+        Header="Code produit" />
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding Name }"
+        Header="Nom produit" />
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding SellingPrice, StringFormat={}{0:N2} € }"
+        Header="Prix vente" />
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding DesiredQuantity }"
+        Header="Quantité" />
 
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal">
+            <DatePicker x:Name="Picker_dateLivraison" HorizontalAlignment="Left" Margin="43,377,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="lab_PxTotal" Content="Total: 1200€ HT" Margin="163,387,0,0" VerticalAlignment="Top" Height="25" Width="99"/>
+            <Button x:Name="but_Supprimer" Content="Supprimer la commande" Margin="400,373,0,0" VerticalAlignment="Top" Width="181" Background="Red" Foreground="#E4FFFFFF"/>
+        </StackPanel>
     </Grid>
 </Page>
