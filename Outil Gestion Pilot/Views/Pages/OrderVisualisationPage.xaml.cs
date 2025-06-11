@@ -21,8 +21,9 @@ namespace Outil_Gestion_Pilot.Views.Pages
     public partial class OrderVisualisationPage : Page
     {
         public OrderVisualisationPage()
-        {
+        { 
             InitializeComponent();
+            DataContext = new ViewModels.Pages.OrderVisualisationViewModel();
         }
 
         private void but_Retour_Click(object sender, RoutedEventArgs e)

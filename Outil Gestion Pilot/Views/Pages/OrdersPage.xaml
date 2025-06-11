@@ -45,6 +45,10 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                  Width="*"
+                 Binding="{Binding CommandeId }"
+                 Header="Numéro commande" />
+                    <DataGridTextColumn
+                 Width="*"
                  Binding="{Binding Reseller}"
                  Header="Revendeur" />
                     <DataGridTextColumn

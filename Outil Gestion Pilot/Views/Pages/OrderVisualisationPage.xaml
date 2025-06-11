@@ -20,28 +20,32 @@
 x:Name="OrderVisuDG"
 AutoGenerateColumns="False"
 IsReadOnly="True"
-ItemsSource="{Binding ProductsView}" Margin="0,85,0,102">
+ItemsSource="{Binding OrderedProducts}" Margin="0,85,0,102">
             <DataGrid.Columns>
                 <DataGridTextColumn
         Width="*"
-        Binding="{Binding ImagePath}"
+        Binding="{Binding Product.ImagePath}"
         Header="Image" />
                 <DataGridTextColumn
         Width="*"
-        Binding="{Binding Code}"
+        Binding="{Binding Product.Code}"
         Header="Code produit" />
                 <DataGridTextColumn
         Width="*"
-        Binding="{Binding Name }"
+        Binding="{Binding Product.Name }"
         Header="Nom produit" />
                 <DataGridTextColumn
         Width="*"
-        Binding="{Binding SellingPrice, StringFormat={}{0:N2} € }"
+        Binding="{Binding Product.SellingPrice, StringFormat={}{0:N2} € }"
         Header="Prix vente" />
                 <DataGridTextColumn
         Width="*"
-        Binding="{Binding DesiredQuantity }"
+        Binding="{Binding Quantity }"
         Header="Quantité" />
+                <DataGridTextColumn
+        Width="*"
+        Binding="{Binding Price }"
+        Header="Prix" />
 
             </DataGrid.Columns>
         </DataGrid>
