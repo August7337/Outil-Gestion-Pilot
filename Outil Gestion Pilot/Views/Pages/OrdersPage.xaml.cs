@@ -3,6 +3,7 @@ using Outil_Gestion_Pilot.ViewModels.Pages;
 using System.Collections.ObjectModel;
 using Wpf.Ui.Abstractions.Controls;
 using Wpf.Ui.Controls;
+using MessageBox = System.Windows.MessageBox;
 
 
 namespace Outil_Gestion_Pilot.Views.Pages
@@ -20,8 +21,20 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         private void but_visualiser_Click(object sender, RoutedEventArgs e)
         {
-            Uri pageFunctionUri = new Uri("Views/Pages/OrderVisualisationPage.xaml", UriKind.Relative);
-            this.NavigationService.Navigate(pageFunctionUri);
+            if(OrderDG.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une commande à visualiser.", "Aucune commande sélectionnée", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Order SelectedOrder = (Order)OrderDG.SelectedItem;
+                Order copie = new Order(SelectedOrder.CommandeId, SelectedOrder.Reseller, SelectedOrder.OrderDate, SelectedOrder.Delivery);
+                OrderVisualisationPage page = new OrderVisualisationPage(); // mettre le paramètre copie => constructeur
+                NavigationService.Navigate(page);
+
+            }
+
+
         }
     }
 }
