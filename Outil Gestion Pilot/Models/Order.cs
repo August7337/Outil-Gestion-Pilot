@@ -15,7 +15,7 @@ namespace Outil_Gestion_Pilot.Models
         private string reseller;
         private DateTime orderDate;
         private string delivery;
-        private List<Product> products;
+        private List<OrderedProduct> products;
 
         public Order()
         {
@@ -26,7 +26,7 @@ namespace Outil_Gestion_Pilot.Models
             this.Reseller = reseller;
             this.OrderDate = orderDate;
             this.Delivery = delivery;
-            Products = new List<Product>();
+            Products = new List<OrderedProduct>();
         }
 
         public string Reseller
@@ -48,7 +48,7 @@ namespace Outil_Gestion_Pilot.Models
             set { this.delivery = value; }
         }
 
-        public List<Product> Products
+        public List<OrderedProduct> Products
         {
             get { return this.products; }
             set { this.products = value; }
