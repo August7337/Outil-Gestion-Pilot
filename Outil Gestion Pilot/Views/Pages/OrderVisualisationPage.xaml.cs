@@ -24,5 +24,11 @@ namespace Outil_Gestion_Pilot.Views.Pages
         {
             InitializeComponent();
         }
+
+        private void but_Retour_Click(object sender, RoutedEventArgs e)
+        {
+            Uri pageFunctionUri = new Uri("Views/Pages/OrdersPage.xaml", UriKind.Relative);
+            this.NavigationService.Navigate(pageFunctionUri);
+        }
     }
 }
