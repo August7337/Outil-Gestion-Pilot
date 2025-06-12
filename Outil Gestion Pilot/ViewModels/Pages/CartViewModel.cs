@@ -41,8 +41,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return false;
         }
 
-
-
         /// <summary>
         /// finds the products in the product collection that starts with the text of the obj.
         /// </summary>
@@ -171,7 +169,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
             return price;
-
         }
 
         public void butNvxRenvedeur_Click(object sender, EventArgs e)

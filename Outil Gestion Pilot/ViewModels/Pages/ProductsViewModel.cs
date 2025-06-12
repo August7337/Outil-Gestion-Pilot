@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.DirectoryServices;
 using System.Windows.Data;
 using System.Diagnostics;
+using Outil_Gestion_Pilot.Views.Windows;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -60,11 +61,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             if (SelectedProduct != null)
             {
-                Cart.Products.Add(new OrderedProduct(10, 2, SelectedProduct));
-                foreach (OrderedProduct item in Cart.Products)
-                {
-                    Debug.WriteLine(item.Product.Name);
-                }
+                SelectQuantityWindow select = new SelectQuantityWindow();
+                bool? result = select.ShowDialog();
+                if (result == true)
+                    Cart.Products.Add(new OrderedProduct(select.Quantity, 0, SelectedProduct));
             }
             else
             {
