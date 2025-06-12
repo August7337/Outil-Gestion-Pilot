@@ -25,8 +25,7 @@ namespace Outil_Gestion_Pilot.Views.Windows
 
             SystemThemeWatcher.Watch(this);
 
-            SessionService sessionService = App.Services.GetRequiredService<SessionService>();
-            ConnectionWindow connectionWindow = new ConnectionWindow(sessionService);
+            ConnectionWindow connectionWindow = new ConnectionWindow();
             bool? result = connectionWindow.ShowDialog();
             if (result != true)
                 Environment.Exit(0);

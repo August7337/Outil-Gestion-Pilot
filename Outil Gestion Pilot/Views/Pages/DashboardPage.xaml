@@ -21,7 +21,7 @@
             <TextBlock x:Name="SqlTxt">...</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="0,0,10,0">Utilisateur :</TextBlock>
-                <TextBlock x:Name="LoginTxt">...</TextBlock>
+                <TextBlock x:Name="InfoTxt">...</TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -6,6 +6,11 @@ using System.DirectoryServices;
 using System.Windows.Data;
 using System.Diagnostics;
 using Outil_Gestion_Pilot.Views.Windows;
+using Outil_Gestion_Pilot.Services;
+using Wpf.Ui.Controls;
+using Outil_Gestion_Pilot.Views.Pages;
+using System.Windows.Navigation;
+using System.Windows.Controls;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -15,7 +20,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         [ObservableProperty]
         private Product selectedProduct;
-
 
         public ICollectionView ProductsView { get; set; }
 
@@ -75,6 +79,35 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 };
 
                 uiMessageBox.ShowDialogAsync();
+            }
+        }
+
+        internal void InitializeRoleBtn(Wpf.Ui.Controls.Button cartBtn, Wpf.Ui.Controls.Button viewBtn, Wpf.Ui.Controls.Button newProductBtn)
+        {
+            if (SessionService.Instance.Role == "Responsable production")
+            {
+                viewBtn.Visibility = Visibility.Collapsed;
+                newProductBtn.Visibility = Visibility.Collapsed;
+            }
+            else if (SessionService.Instance.Role == "Commercial")
+            {
+                cartBtn.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        internal void ShowProduct(NavigationService navigationService, System.Windows.Controls.DataGrid dataGrid)
+        {
+            if (dataGrid.SelectedItem == null)
+            {
+                System.Windows.MessageBox.Show("Veuillez sélectionner une commande à visualiser.", "Aucune commande sélectionnée", System.Windows.MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                Product SelectedProduct = (Product)dataGrid.SelectedItem;
+                Product copie = new Product(SelectedProduct.ImagePath, SelectedProduct.Code, SelectedProduct.Name, SelectedProduct.Type, SelectedProduct.Tipe, SelectedProduct.SellingPrice, SelectedProduct.Stock, SelectedProduct.Color);
+                ProductVisualisationPage page = new ProductVisualisationPage(copie);
+                navigationService.Navigate(page);
+                
             }
         }
     }

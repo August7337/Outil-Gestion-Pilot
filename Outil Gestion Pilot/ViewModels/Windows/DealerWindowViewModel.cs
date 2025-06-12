@@ -15,15 +15,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
     {
         [ObservableProperty]
         private ObservableCollection<Reseller> dealers;
-        private readonly SessionService sessionService;
 
         public ICollectionView DealerView { get; set; }
-
-        public DealerWindowViewModel(SessionService sessionService)
-        {
-            this.sessionService = sessionService;
-        }
-
 
         public DealerWindowViewModel()
         {
@@ -31,7 +24,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
             LoadSampleReseller();
 
             DealerView = CollectionViewSource.GetDefaultView(Dealers);
-
         }
 
         private void LoadSampleReseller()

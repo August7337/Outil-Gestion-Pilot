@@ -9,10 +9,8 @@ namespace Outil_Gestion_Pilot.Views.Pages
     public partial class DashboardPage : INavigableView<DashboardViewModel>
     {
         public DashboardViewModel ViewModel { get; }
-        private readonly SessionService sessionService;
 
-
-        public DashboardPage(DashboardViewModel viewModel, SessionService sessionService)
+        public DashboardPage(DashboardViewModel viewModel)
         {
             ViewModel = viewModel;
             DataContext = this;
@@ -30,7 +28,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
                 SqlTxt.Text = $"Erreur : {ex.Message}";
             }
 
-            LoginTxt.Text = sessionService.Login;
+            InfoTxt.Text = SessionService.Instance.Login + " est un " + SessionService.Instance.Role;
         }
     }
 }

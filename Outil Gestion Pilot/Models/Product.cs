@@ -20,6 +20,7 @@ namespace Outil_Gestion_Pilot.Models
         private int stock;
         private List<Color> color;
         private int desiredQuantity;
+        private bool disponibility;
 
         public Product()
         {
@@ -43,6 +44,7 @@ namespace Outil_Gestion_Pilot.Models
             this.SellingPrice = sellingPrice;
             this.Stock = stock;
             this.Color = color;
+            this.Disponibility = true;
         }
 
         public string ImagePath
@@ -130,6 +132,12 @@ namespace Outil_Gestion_Pilot.Models
             {
                 this.desiredQuantity = value;
             }
+        }
+
+        public bool Disponibility
+        {
+            get { return this.disponibility; }
+            set { this.disponibility = value; }
         }
 
         public static List<Product> FindAll()

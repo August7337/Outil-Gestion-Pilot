@@ -15,14 +15,12 @@ namespace Outil_Gestion_Pilot.Views.Windows
     public partial class DealerWindow : FluentWindow
     {
         public DealerWindowViewModel ViewModel { get; set; }
-        private readonly SessionService sessionService;
 
         public DealerWindow(Action action)
         {
             InitializeComponent();
             ViewModel = App.Services.GetRequiredService<DealerWindowViewModel>();
             DataContext = ViewModel;
-            this.sessionService = sessionService;
             but_Revendeur.Content = action;
         }
     }
