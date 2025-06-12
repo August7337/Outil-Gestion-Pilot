@@ -68,6 +68,8 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<OrdersViewModel>();
                 services.AddSingleton<OrderVisualisationPage>();
                 services.AddSingleton<OrderVisualisationViewModel>();
+                services.AddSingleton<ProductVisualisationPage>();
+                services.AddSingleton<ProductVisualisationViewModel>();
 
                 services.AddSingleton<DealerWindow>();
                 services.AddSingleton<DealerWindowViewModel>();

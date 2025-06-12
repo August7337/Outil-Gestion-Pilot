@@ -12,18 +12,18 @@ namespace Outil_Gestion_Pilot.Views.Windows
     public partial class ConnectionWindow : FluentWindow
     {
         public ConnectionWindowViewModel ViewModel { get; set; }
-        private readonly SessionService sessionService;
+        //private readonly SessionService sessionService;
 
-        public ConnectionWindow(SessionService sessionService)
+        public ConnectionWindow()
         {
             InitializeComponent();
             ViewModel = App.Services.GetRequiredService<ConnectionWindowViewModel>();
             DataContext = ViewModel;
-            this.sessionService = sessionService;
+            //this.sessionService = sessionService;
 
             if (ConfigurationManager.AppSettings["NeedAuth"] == "false")
             {
-                sessionService.Login = ConfigurationManager.AppSettings["Login"];
+                SessionService.Instance.Login = ConfigurationManager.AppSettings["Login"];
                 this.Loaded += (s, e) =>
                 {
                     this.DialogResult = true;
@@ -35,7 +35,7 @@ namespace Outil_Gestion_Pilot.Views.Windows
         private void Validation_Click(object sender, RoutedEventArgs e)
         {
             ErrorTxt.Text = ViewModel.Connection(usernameBox.Text, passwordBox.Password);
-            if (sessionService.Login is not null)
+            if (SessionService.Instance.Login is not null)
                 this.DialogResult = true;
         }
     }

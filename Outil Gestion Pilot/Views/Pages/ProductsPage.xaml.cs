@@ -15,11 +15,19 @@ namespace Outil_Gestion_Pilot.Views.Pages
             ViewModel = viewModel;
             DataContext = ViewModel;
             InitializeComponent();
+            ViewModel.InitializeRoleBtn(CartBtn, ViewBtn, NewProductBtn);
         }
 
         private void CartBtn_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.AddToCart();
         }
+
+        private void ViewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.ShowProduct(NavigationService, productsDG);
+        }
+
+        
     }
 }

@@ -10,12 +10,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 {
     public partial class ConnectionWindowViewModel : ObservableObject
     {
-        private readonly SessionService sessionService;
-
-        public ConnectionWindowViewModel(SessionService sessionService)
-        {
-            this.sessionService = sessionService;
-        }
+        public ConnectionWindowViewModel() { }
 
         /// <summary>
         /// Attempts to authenticate a user by verifying the credentials against the database.
@@ -32,6 +27,15 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 
             try
             {
+
+                var role = new NpgsqlCommand("SELECT libellerole FROM employe e " +
+                    "JOIN role r on r.numrole = e.numrole " +
+                    "WHERE login = @username AND password = @password");
+                role.Parameters.AddWithValue("username", username);
+                role.Parameters.AddWithValue("password", password);
+
+                SessionService.Instance.Role = (string)DataAccess.Instance.ExecuteSelectUneValeur(role);
+
                 var cmd = new NpgsqlCommand("SELECT login FROM employe WHERE login = @username AND password = @password");
                 cmd.Parameters.AddWithValue("username", username);
                 cmd.Parameters.AddWithValue("password", password);
@@ -39,7 +43,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
                 object result = DataAccess.Instance.ExecuteSelectUneValeur(cmd);
                 if (result != null)
                 {
-                    sessionService.Login = result.ToString();
+                    SessionService.Instance.Login = result.ToString();
                     return result.ToString();
                 }
                 else message = "Informations incorrects";

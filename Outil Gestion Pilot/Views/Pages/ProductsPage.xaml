@@ -80,7 +80,11 @@
                         IsChecked="True" />
                 </StackPanel>
             </StackPanel>
-            <ui:Button x:Name="CartBtn" Margin="0,0,0,20" Click="CartBtn_Click">Ajouter au panier</ui:Button>
+            <StackPanel Margin="0,0,0,20" Orientation="Horizontal">
+                <ui:Button x:Name="CartBtn" Click="CartBtn_Click" Margin="0,0,10,0">Ajouter au panier</ui:Button>
+                <ui:Button x:Name="ViewBtn" Margin="0,0,10,0" Click="ViewBtn_Click">Visioner</ui:Button>
+                <ui:Button x:Name="NewProductBtn" Margin="0,0,10,0">Nouveau Produit</ui:Button>
+            </StackPanel>
             <DataGrid
                 x:Name="productsDG"
                 AutoGenerateColumns="False"
