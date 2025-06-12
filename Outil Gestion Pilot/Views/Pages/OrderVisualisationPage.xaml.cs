@@ -52,6 +52,9 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         private void but_Retour_Click(object sender, RoutedEventArgs e)
         {
+            OrdersViewModel ordersViewModel = new OrdersViewModel(); // Instancier un ViewModel valide
+            OrdersPage page = new OrdersPage(ordersViewModel);
+            NavigationService.Navigate(page);
         }
 
         private void but_Supprimer_Click(object sender, RoutedEventArgs e)
