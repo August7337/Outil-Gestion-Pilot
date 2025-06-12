@@ -32,7 +32,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 
             try
             {
-                var cmd = new NpgsqlCommand("SELECT login FROM employe WHERE login = '" + username + "' AND password = '" + password + "';");
+                var cmd = new NpgsqlCommand("SELECT login FROM employe WHERE login = @username AND password = @password");
+                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("password", password);
+                
                 object result = DataAccess.Instance.ExecuteSelectUneValeur(cmd);
                 if (result != null)
                 {
