@@ -51,10 +51,10 @@ namespace Outil_Gestion_Pilot.Models
             set { this.product = value; }
         }
 
-        public static List<OrderedProduct> FindAll()
+        public static List<OrderedProduct> FindAll(int idCommande)
         {
             List<OrderedProduct> orderedProducts = new List<OrderedProduct>();
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT pc.quantitecommande,pc.prix,p.codeproduit,p.nomproduit,p.prixvente FROM produitcommande pc JOIN commande c ON pc.numcommande = c.numcommande JOIN produit p ON pc.numproduit = p.numproduit WHERE c.numcommande = 1;"))
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT pc.quantitecommande,pc.prix,p.codeproduit,p.nomproduit,p.prixvente FROM produitcommande pc JOIN commande c ON pc.numcommande = c.numcommande JOIN produit p ON pc.numproduit = p.numproduit WHERE c.numcommande = " + idCommande + " ;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)

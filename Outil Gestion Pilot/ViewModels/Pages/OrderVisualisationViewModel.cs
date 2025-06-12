@@ -18,9 +18,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public ICollectionView OrderedProductView { get; set; }
 
-        public OrderVisualisationViewModel() 
+        public OrderVisualisationViewModel(Order uneCommande) 
         {
-            OrderedProducts = new ObservableCollection<OrderedProduct>(OrderedProduct.FindAll());
+            int idCommande = uneCommande.CommandeId;
+            OrderedProducts = new ObservableCollection<OrderedProduct>(OrderedProduct.FindAll(idCommande));
             OrderedProductView = CollectionViewSource.GetDefaultView(OrderedProducts);
         }
     }
