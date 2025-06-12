@@ -85,10 +85,10 @@
                     VerticalAlignment="Top" 
                     Margin="5,0,0,0" 
                     Width="100" 
-                    Height="35" >
-                    <ComboBoxItem Content="A" />
-                    <ComboBoxItem Content="B" />
-                    <ComboBoxItem Content="C" />
+                    Height="35">
+                    <ComboBoxItem Content="UPS" />
+                    <ComboBoxItem Content="Chronopost" />
+                    <ComboBoxItem Content="Relais" />
                 </ComboBox>
             </StackPanel>
 

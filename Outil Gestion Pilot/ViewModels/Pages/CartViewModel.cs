@@ -13,9 +13,11 @@ using Outil_Gestion_Pilot.ViewModels.Windows;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
+    public enum ModeLivraison { UPS, Chronopost, Relais };
     public partial class CartViewModel : ObservableObject
     {
         public ObservableCollection<OrderedProduct> Carts => Cart.Products;
+
 
         public ICollectionView CartView { get; set; }
         [ObservableProperty]
