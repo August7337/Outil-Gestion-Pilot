@@ -51,6 +51,9 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<ConnectionWindow>();
                 services.AddSingleton<ConnectionWindowViewModel>();
 
+                services.AddSingleton<SelectQuantityWindow>();
+                services.AddSingleton<SelectQuantityWindowViewModel>();
+
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
                 services.AddSingleton<DataPage>();

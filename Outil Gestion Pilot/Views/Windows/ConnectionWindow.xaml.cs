@@ -32,11 +32,6 @@ namespace Outil_Gestion_Pilot.Views.Windows
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
-
         private void Validation_Click(object sender, RoutedEventArgs e)
         {
             ErrorTxt.Text = ViewModel.Connection(usernameBox.Text, passwordBox.Password);

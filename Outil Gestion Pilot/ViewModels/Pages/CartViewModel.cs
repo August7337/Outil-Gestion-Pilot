@@ -41,8 +41,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return false;
         }
 
-
-
         /// <summary>
         /// finds the products in the product collection that starts with the text of the obj.
         /// </summary>
@@ -79,17 +77,17 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
                 if (string.IsNullOrWhiteSpace(SearchPriceText))
                 {
-                    SearchPrice = -10; // If the textbox is empty, the variable SearchPrice is set to -10 
+                    SearchPrice = -10;
                     CartView.Refresh() ;
                 }
                 else
                 {
-                    string doubleFormat = value.Replace('.', ','); // The "." are interpreted as ","
+                    string doubleFormat = value.Replace('.', ',');
 
-                    if (double.TryParse(doubleFormat, out double price)) // Check if the conversion is valid
+                    if (double.TryParse(doubleFormat, out double price))
                     {
-                        SearchPrice = price; // Set up the value write in the textbox
-                        CartView.Refresh(); // Refresh the filtered list
+                        SearchPrice = price;
+                        CartView.Refresh();
                     }
                 }
                 
@@ -98,7 +96,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         }
 
         [ObservableProperty]
-        private double searchPrice; // This variable is used in the SearchPrice method, type: double
+        private double searchPrice;
 
         /// <summary>
         /// Refreshes the data grid when the function is called.
@@ -131,14 +129,14 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
                 if (string.IsNullOrWhiteSpace(SearchQteText))
                 {
-                    SearchQte = -10; // If the textbox is empty, the variable SearchPrice is set to -10 
-                    CartView.Refresh(); // Refresh the filtered list
+                    SearchQte = -10;
+                    CartView.Refresh();
 
                 }
                 else if (int.TryParse(value, out int quantity)) 
                 {
-                    SearchQte = quantity; // Met à jour la vraie valeur numérique
-                    CartView.Refresh(); // Refresh the filtered list
+                    SearchQte = quantity;
+                    CartView.Refresh();
 
                 }
 
@@ -171,16 +169,15 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
             return price;
-
         }
 
-        public void butNvxRenvedeur_Click(object sender, EventArgs e)
+        public void ButNvxRenvedeur_Click(object sender, EventArgs e)
         {
             DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Créer);
             dealerWindow.ShowDialog();
-
         }
-        public void butModifyRenvedeur_Click(object sender, EventArgs e)
+
+        public void ButModifyRenvedeur_Click(object sender, EventArgs e)
         {
             DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Modifier);
             dealerWindow.ShowDialog();
