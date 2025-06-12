@@ -36,7 +36,9 @@ namespace Outil_Gestion_Pilot.Views.Pages
         {
             ViewModel = viewModel;
             InitializeComponent();
+            SetPriceTTC();
             this.DataContext = new ViewModels.Pages.OrderVisualisationViewModel(uneCommande);
+
         }
 
         public OrderVisualisationPage(Order uneCommande)
@@ -44,6 +46,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
             laCommande = uneCommande;
             ViewModel = new OrderVisualisationViewModel(laCommande); // Initialisation de ViewModel
             InitializeComponent();
+            SetPriceTTC();
             this.DataContext = new ViewModels.Pages.OrderVisualisationViewModel(laCommande);
         }
 
@@ -56,5 +59,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
             ViewModel.butSupprimer_Click(laCommande);
         }
 
+        public void SetPriceTTC()
+        {
+            int OrderPrice = 0;
+            lab_PxTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString()  +"€";
+        }
     }
 }

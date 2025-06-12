@@ -55,5 +55,15 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 MessageBox.Show("Suppression annulée.", "Annulation", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        public double ResolvePriceTTC()
+        {
+            double price = 0;
+            foreach (OrderedProduct aproduct in OrderedProducts)
+            {
+                price += aproduct.Price;
+            }
+            return price;
+        }
     }
 }
