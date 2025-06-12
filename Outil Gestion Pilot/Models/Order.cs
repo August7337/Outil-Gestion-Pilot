@@ -83,7 +83,7 @@ namespace Outil_Gestion_Pilot.Models
                             Convert.ToInt32(dr["numcommande"]),
                             (string)dr["raisonsociale"],
                             Convert.ToDateTime(dr["datecommande"]),
-                            (string)dr["libelletransport"]
+                    (string)dr["libelletransport"]
                         )
                     );
                 }

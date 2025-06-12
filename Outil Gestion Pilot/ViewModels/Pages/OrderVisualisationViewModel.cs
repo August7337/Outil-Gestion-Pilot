@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Windows.Data;
 using Npgsql;
 using System.Data;
+using Outil_Gestion_Pilot.Views.Pages;
+using System.Windows.Navigation;
 
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
@@ -47,7 +49,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                     DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 }
                 MessageBox.Show("Suppression effectué.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                CollectionViewSource.GetDefaultView(OrderedProducts).Refresh();
 
             }
             else
@@ -64,6 +66,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 price += aproduct.Price;
             }
             return price;
+        }
+
+        internal void butRetour_Click()
+        {
+            OrdersViewModel ordersViewModel = new OrdersViewModel(); // Instancier un ViewModel valide
+            OrdersPage page = new OrdersPage(ordersViewModel);
         }
     }
 }

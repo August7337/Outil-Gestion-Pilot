@@ -60,6 +60,8 @@ namespace Outil_Gestion_Pilot.Views.Pages
         private void but_Supprimer_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.butSupprimer_Click(laCommande);
+            but_Retour_Click(sender, e);
+
         }
 
         public void SetPriceTTC()
