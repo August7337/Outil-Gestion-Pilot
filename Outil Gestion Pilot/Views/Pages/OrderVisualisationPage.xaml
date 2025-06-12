@@ -52,7 +52,7 @@ ItemsSource="{Binding OrderedProducts}" Margin="0,85,0,102">
         <StackPanel Orientation="Horizontal">
             <DatePicker x:Name="Picker_dateLivraison" HorizontalAlignment="Left" Margin="43,377,0,0" VerticalAlignment="Top"/>
             <Label x:Name="lab_PxTotal" Content="Total: 1200€ HT" Margin="163,387,0,0" VerticalAlignment="Top" Height="25" Width="99"/>
-            <Button x:Name="but_Supprimer" Content="Supprimer la commande" Margin="400,373,0,0" VerticalAlignment="Top" Width="181" Background="Red" Foreground="#E4FFFFFF"/>
+            <Button x:Name="but_Supprimer" Content="Supprimer la commande" Margin="400,373,0,0" VerticalAlignment="Top" Width="181" Background="Red" Foreground="#E4FFFFFF" Click="but_Supprimer_Click" CommandParameter=""/>
         </StackPanel>
     </Grid>
 </Page>
