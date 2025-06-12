@@ -29,18 +29,5 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         }
 
-        private void butNvxRenvedeur_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.ButNvxRenvedeur_Click(sender, e);
-        }
-
-        
-
-        private void butModRevendeur_Click(object sender, RoutedEventArgs e)
-        {
-            ViewModel.ButModifyRenvedeur_Click(sender, e);
-
-            
-        }
     }
 }

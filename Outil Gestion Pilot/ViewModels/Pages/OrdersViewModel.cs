@@ -144,7 +144,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         /// Refreshes the data grid when the function is called.
         /// </summary>
         /// <param name="value"></param>
-        public void OnSearchPriceChanged(double value)
+        public void OnSearchcommandIdChanged(double value)
         {
             OrdersView.Refresh();
         }

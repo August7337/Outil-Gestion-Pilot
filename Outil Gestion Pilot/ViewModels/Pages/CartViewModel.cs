@@ -170,18 +170,5 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
             return price;
         }
-
-        public void ButNvxRenvedeur_Click(object sender, EventArgs e)
-        {
-            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Créer);
-            dealerWindow.ShowDialog();
-        }
-
-        public void ButModifyRenvedeur_Click(object sender, EventArgs e)
-        {
-            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Modifier);
-            dealerWindow.ShowDialog();
-
-        }
     }
 }

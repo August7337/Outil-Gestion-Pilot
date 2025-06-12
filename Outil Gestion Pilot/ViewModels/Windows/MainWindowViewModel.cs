@@ -40,6 +40,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
                 Content = "Commandes",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.NotepadEdit20 },
                 TargetPageType = typeof(Views.Pages.OrdersPage)
+            },
+            new NavigationViewItem()
+            {
+                Content = "Revendeurs",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.PersonSquare20 },
+                TargetPageType = typeof(Views.Pages.DealersPage)
             }
         };
 

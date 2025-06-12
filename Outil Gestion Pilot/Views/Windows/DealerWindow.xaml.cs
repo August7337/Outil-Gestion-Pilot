@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Outil_Gestion_Pilot.Models;
 using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.ViewModels.Pages;
 using Outil_Gestion_Pilot.ViewModels.Windows;
@@ -17,13 +18,16 @@ namespace Outil_Gestion_Pilot.Views.Windows
         public DealerWindowViewModel ViewModel { get; set; }
         private readonly SessionService sessionService;
 
-        public DealerWindow(Action action)
+        public DealerWindow(Action action, Reseller aReseller)
         {
+            this.DataContext = aReseller;
             InitializeComponent();
-            ViewModel = App.Services.GetRequiredService<DealerWindowViewModel>();
-            DataContext = ViewModel;
-            this.sessionService = sessionService;
             but_Revendeur.Content = action;
+        }
+
+        private void but_Revendeur_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }
