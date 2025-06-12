@@ -19,6 +19,10 @@ namespace Outil_Gestion_Pilot.Views.Pages
             InitializeComponent();
         }
 
+        public OrdersPage()
+        {
+        }
+
         private void but_visualiser_Click(object sender, RoutedEventArgs e)
         {
             if(OrderDG.SelectedItem == null)
@@ -29,7 +33,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
             {
                 Order SelectedOrder = (Order)OrderDG.SelectedItem;
                 Order copie = new Order(SelectedOrder.CommandeId, SelectedOrder.Reseller, SelectedOrder.OrderDate, SelectedOrder.Delivery);
-                OrderVisualisationPage page = new OrderVisualisationPage(); // mettre le paramètre copie => constructeur
+                OrderVisualisationPage page = new OrderVisualisationPage(copie);
                 NavigationService.Navigate(page);
 
             }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.ViewModels.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui;
 
 namespace Outil_Gestion_Pilot.Views.Pages
 {
@@ -20,16 +23,16 @@ namespace Outil_Gestion_Pilot.Views.Pages
     /// </summary>
     public partial class OrderVisualisationPage : Page
     {
-        public OrderVisualisationPage()
+        INavigationService navigationService;
+
+        public OrderVisualisationPage(Order uneCommande)
         { 
             InitializeComponent();
-            DataContext = new ViewModels.Pages.OrderVisualisationViewModel();
+            this.DataContext = new ViewModels.Pages.OrderVisualisationViewModel(uneCommande);
         }
 
         private void but_Retour_Click(object sender, RoutedEventArgs e)
         {
-            Uri pageFunctionUri = new Uri("Views/Pages/OrdersPage.xaml", UriKind.Relative);
-            this.NavigationService.Navigate(pageFunctionUri);
         }
     }
 }
