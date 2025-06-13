@@ -13,18 +13,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
         {
             new NavigationViewItem()
             {
-                Content = "Home",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
-                TargetPageType = typeof(Views.Pages.DashboardPage)
-            },
-            new NavigationViewItem()
-            {
-                Content = "Data",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(Views.Pages.DataPage)
-            },
-            new NavigationViewItem()
-            {
                 Content = "Produits",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Box24 },
                 TargetPageType = typeof(Views.Pages.ProductsPage)

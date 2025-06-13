@@ -110,10 +110,6 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="*"
-                        Binding="{Binding ImagePath}"
-                        Header="Image" />
-                    <DataGridTextColumn
-                        Width="*"
                         Binding="{Binding Code}"
                         Header="Code Produit" />
                     <DataGridTextColumn

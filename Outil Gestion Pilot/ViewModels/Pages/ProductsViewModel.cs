@@ -65,12 +65,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             if (SessionService.Instance.Role == "Responsable production")
             {
-                viewBtn.Visibility = Visibility.Collapsed;
-                newProductBtn.Visibility = Visibility.Collapsed;
+                cartBtn.Visibility = Visibility.Collapsed;
             }
             else if (SessionService.Instance.Role == "Commercial")
             {
-                cartBtn.Visibility = Visibility.Collapsed;
+                viewBtn.Visibility = Visibility.Collapsed;
+                newProductBtn.Visibility = Visibility.Collapsed;
             }
         }
 
