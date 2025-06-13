@@ -120,7 +120,7 @@ namespace Outil_Gestion_Pilot.Models
 
         public void Create()
         {
-            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numerorevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville)"))
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numrevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville)"))
             {
                 cmdInsert.Parameters.AddWithValue("numrevendeur", this.NumeroRevendeur);
                 cmdInsert.Parameters.AddWithValue("raisonsociale", this.RaisonSociale);

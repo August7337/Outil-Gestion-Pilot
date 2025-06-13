@@ -21,40 +21,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
         public DealerWindowViewModel()
         {
             Dealers = new ObservableCollection<Reseller>();
-            LoadSampleReseller();
 
             DealerView = CollectionViewSource.GetDefaultView(Dealers);
         }
 
-        private void LoadSampleReseller()
-        {
-            Dealers.Add(new Reseller
-            {
-                NumeroRevendeur = 1,
-                RaisonSociale = "SAS Carrefour",
-                Rue = "9 rue de l'arc en ciel",
-                Cp = "74000",
-                Ville = "Annecy"
-            });
-
-            Dealers.Add(new Reseller
-            {
-                NumeroRevendeur = 2,
-                RaisonSociale = "Super U",
-                Rue = "2 chemin du fier",
-                Cp = "38110",
-                Ville = "Grenoble"
-            });
-
-            Dealers.Add(new Reseller
-            {
-                NumeroRevendeur = 3,
-                RaisonSociale = "Intermarché Lugrin",
-                Rue = "ZAC des crets",
-                Cp = "74500",
-                Ville = "Lugrin"
-            });
-        }
+        
 
     }
 }
