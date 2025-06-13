@@ -19,17 +19,6 @@ namespace Outil_Gestion_Pilot.Views.Windows
             InitializeComponent();
             ViewModel = App.Services.GetRequiredService<ConnectionWindowViewModel>();
             DataContext = ViewModel;
-            //this.sessionService = sessionService;
-
-            if (ConfigurationManager.AppSettings["NeedAuth"] == "false")
-            {
-                SessionService.Instance.Login = ConfigurationManager.AppSettings["Login"];
-                this.Loaded += (s, e) =>
-                {
-                    this.DialogResult = true;
-                    this.Close();
-                };
-            }
         }
 
         private void Validation_Click(object sender, RoutedEventArgs e)

@@ -35,8 +35,6 @@
                         <ComboBoxItem Content="Loisir" />
                         <ComboBoxItem Content="École" />
                         <ComboBoxItem Content="Haute écriture" />
-
-
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
@@ -51,9 +49,6 @@
                         <ComboBoxItem Content="Roller Liquide" />
                         <ComboBoxItem Content="Plume" />
                         <ComboBoxItem Content="Feutre"/>
-
-
-
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
@@ -99,7 +94,7 @@
             <StackPanel Margin="0,0,0,20" Orientation="Horizontal">
                 <ui:Button x:Name="CartBtn" Click="CartBtn_Click" Margin="0,0,10,0">Ajouter au panier</ui:Button>
                 <ui:Button x:Name="ViewBtn" Margin="0,0,10,0" Click="ViewBtn_Click">Visioner</ui:Button>
-                <ui:Button x:Name="NewProductBtn" Margin="0,0,10,0">Nouveau Produit</ui:Button>
+                <ui:Button x:Name="NewProductBtn" Margin="0,0,10,0" Click="NewProductBtn_Click">Nouveau Produit</ui:Button>
             </StackPanel>
             <DataGrid
                 x:Name="productsDG"
