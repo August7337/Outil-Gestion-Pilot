@@ -1,15 +1,18 @@
-﻿using Outil_Gestion_Pilot.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
+using Outil_Gestion_Pilot.Models;
+using Outil_Gestion_Pilot.Models.Attributes;
+using Outil_Gestion_Pilot.Services;
+using Outil_Gestion_Pilot.ViewModels.Windows;
+using Outil_Gestion_Pilot.Views.Pages;
+using Outil_Gestion_Pilot.Views.Windows;
 using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
+using System.Data;
 using System.DirectoryServices;
 using System.Windows.Data;
-using Outil_Gestion_Pilot.Views.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using Outil_Gestion_Pilot.Services;
-using Outil_Gestion_Pilot.Views.Pages;
-using Outil_Gestion_Pilot.Models.Attributes;
-using Outil_Gestion_Pilot.ViewModels.Windows;
+using System.Windows.Navigation;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -147,7 +150,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         }
 
         [ObservableProperty]
-        private double searchQte; // This variable is used in the SearchQte method, type: double
+        private double searchQte;
 
         partial void OnSearchQteChanged(double value)
         {
@@ -171,6 +174,65 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
             return price;
+        }
+
+        public void Create()
+        {
+            try
+            {
+                using (NpgsqlCommand cmdInsert = new NpgsqlCommand("INSERT INTO commande (numemploye, numrevendeur, datecommande, numtransport, datelivraison, prixtotal) VALUES (@numemploye, @numrevendeur, @datecommande, @numtransport, @datelivraison, @prixtotal);"))
+                {
+                    cmdInsert.Parameters.AddWithValue("@numemploye", 1);
+                    cmdInsert.Parameters.AddWithValue("@numtransport", Cart.Transport);
+                    cmdInsert.Parameters.AddWithValue("@numrevendeur", Cart.Resseller);
+                    cmdInsert.Parameters.AddWithValue("@datecommande", Cart.OrderDate);
+                    cmdInsert.Parameters.AddWithValue("@datelivraison", new DateTime(1, 1, 1));
+                    cmdInsert.Parameters.AddWithValue("@prixtotal", 200);
+
+                    DataAccess.Instance.ExecuteSet(cmdInsert);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CreateConnection()
+        {
+            try
+            {
+                int commandeId;
+
+                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT MAX(numcommande) FROM commande;"))
+                {
+                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
+                    commandeId = Convert.ToInt32(dt.Rows[0][0]);
+                }
+
+                foreach (OrderedProduct item in Cart.Products)
+                {
+                    using (NpgsqlCommand cmdInsert = new NpgsqlCommand("INSERT INTO produitcommande (numcommande, numproduit, quantitecommande, prix) VALUES (@numcommande, @numproduit, @quantitecommande, @prix);"))
+                    {
+                        cmdInsert.Parameters.AddWithValue("@numcommande", commandeId);
+                        cmdInsert.Parameters.AddWithValue("@numproduit", item.Product.Id);
+                        cmdInsert.Parameters.AddWithValue("@quantitecommande", item.Quantity);
+                        cmdInsert.Parameters.AddWithValue("@prix", item.Quantity * item.Product.SellingPrice);
+
+                        DataAccess.Instance.ExecuteSet(cmdInsert);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        internal void PurchaseCart()
+        {   
+            Create();
+            CreateConnection();
         }
     }
 }

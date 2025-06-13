@@ -16,18 +16,20 @@ namespace Outil_Gestion_Pilot.Views.Pages
             DataContext = ViewModel;
             InitializeComponent();
             SetPriceTTC();
-            
         }
+
         public void SetPriceTTC()
         {
             labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString() + "€";
         }
 
-       
-        private void ButCommander_Click(object sender, RoutedEventArgs e)
+        private void ButOrder_Click(object sender, RoutedEventArgs e)
         {
+            Cart.Transport = lstLivraison.SelectedIndex + 1;
+            Cart.Resseller = lstRevendeur.SelectedIndex + 1;
+            Cart.OrderDate = DateTime.Now;
 
+            ViewModel.PurchaseCart();
         }
-
     }
 }
