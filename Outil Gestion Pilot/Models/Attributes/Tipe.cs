@@ -10,12 +10,21 @@ namespace Outil_Gestion_Pilot.Models.Attributes
 {
     public class Tipe
     {
+        private int id;
         private string name;
+
         public static List<Tipe> Tipes = Tipe.FindAll();
 
-        public Tipe(string name)
+        public Tipe(int id, string name)
         {
+            this.Id = id;
             this.Name = name;
+        }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name
@@ -35,6 +44,7 @@ namespace Outil_Gestion_Pilot.Models.Attributes
                 {
                     tipes.Add(
                         new Tipe(
+                            (int)dr["numtypepointe"],
                             (string)dr["libelletypepointe"]
                         )
                     );

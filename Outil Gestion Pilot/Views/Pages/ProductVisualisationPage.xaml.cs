@@ -28,9 +28,11 @@ namespace Outil_Gestion_Pilot.Views.Pages
             this.DataContext = new ViewModels.Pages.ProductVisualisationViewModel(product);
         }
 
-        public void but_Retour_Click()
+        private void But_Retour_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductsViewModel productsViewModel = new ProductsViewModel();
+            ProductsPage page = new ProductsPage(productsViewModel);
+            NavigationService.Navigate(page);
         }
     }
 }

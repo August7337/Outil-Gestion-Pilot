@@ -15,7 +15,7 @@
  mc:Ignorable="d">
 
     <Grid>
-        <ui:Button x:Name="but_Retour" FontFamily="Segoe MDL2 Assets" Content="&#xE760;" Margin="10,10,0,0" VerticalAlignment="Top" Click="but_Retour_Click" Height="41" Width="54"/>
+        <ui:Button x:Name="but_Retour" Content="Retour" Icon="{ui:SymbolIcon ArrowCircleLeft32}" Margin="10,10,0,0" VerticalAlignment="Top" Click="but_Retour_Click"/>
         <DataGrid
 x:Name="OrderVisuDG"
 AutoGenerateColumns="False"

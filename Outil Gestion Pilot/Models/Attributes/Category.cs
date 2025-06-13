@@ -11,11 +11,19 @@ namespace Outil_Gestion_Pilot.Models.Attributes
     public class Category
     {
         public static List<Category> Categorys = Category.FindAll();
+        private int id;
         private string name;
 
-        public Category(string name)
+        public Category(int id, string name)
         {
+            this.Id = id;
             this.Name = name;
+        }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name
@@ -35,6 +43,7 @@ namespace Outil_Gestion_Pilot.Models.Attributes
                 {
                     categorys.Add(
                         new Category(
+                            (int)dr["numcategorie"],
                             (string)dr["libellecategorie"]
                         )
                     );

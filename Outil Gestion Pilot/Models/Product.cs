@@ -2,15 +2,18 @@
 using Outil_Gestion_Pilot.Models.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Linq;
 
 namespace Outil_Gestion_Pilot.Models
 {
-    public class Product
+    public partial class Product : ObservableObject
     {
         public static List<Product> Products = Product.FindAll();
 
+        private int id;
         private string imagePath;
         private string code;
         private string name;
@@ -20,6 +23,8 @@ namespace Outil_Gestion_Pilot.Models
         private int stock;
         private List<Color> color;
         private int desiredQuantity;
+
+        [ObservableProperty]
         private bool disponibility;
 
         public Product()
@@ -34,8 +39,9 @@ namespace Outil_Gestion_Pilot.Models
             this.SellingPrice = sellingPrice;
         }
 
-        public Product(string imagePath, string code, string name, Attributes.Type type, Tipe tipe, double sellingPrice, int stock, List<Color> color)
+        public Product(int id, string imagePath, string code, string name, Attributes.Type type, Tipe tipe, double sellingPrice, int stock, List<Color> color, bool disponibility)
         {
+            this.Id = id;
             this.ImagePath = imagePath;
             this.Code = code;
             this.Name = name;
@@ -44,7 +50,13 @@ namespace Outil_Gestion_Pilot.Models
             this.SellingPrice = sellingPrice;
             this.Stock = stock;
             this.Color = color;
-            this.Disponibility = true;
+            this.Disponibility = disponibility;
+        }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string ImagePath
@@ -134,12 +146,6 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public bool Disponibility
-        {
-            get { return this.disponibility; }
-            set { this.disponibility = value; }
-        }
-
         public static List<Product> FindAll()
         {
             List<Product> products = new List<Product>();
@@ -152,19 +158,49 @@ namespace Outil_Gestion_Pilot.Models
 
                     products.Add(
                         new Product(
+                            (int)dr["numproduit"],
                             "à implémenter",
                             (string)dr["codeproduit"],
-                            (string)dr["nomproduit"],
+                            (string)dr["nomproduit"], //
                             Attributes.Type.FindAll()[(int)dr["numtype"] - 1],
                             Tipe.FindAll()[(int)dr["numtypepointe"] - 1],
                             Convert.ToDouble(dr["prixvente"]), 
                             (int)dr["quantitestock"],
-                            FindColors((string)dr["codeproduit"])
+                            FindColors((string)dr["codeproduit"]),
+                            (bool)dr["disponible"]
                         )
                     );
                 }
             }
             return products;
+        }
+
+        public int Update()
+        {
+            using (var cmdUpdate = new NpgsqlCommand("update produit set codeproduit =@code, " +
+                "nomproduit = @name,  " +
+                "numtype = @type,  " +
+                "numtypepointe = @tipe, " +
+                "prixvente = @price, " +
+                "quantitestock = @stock, " +
+                "disponible = @disponibility " +
+                "where numproduit = @id;"))
+            {
+                cmdUpdate.Parameters.AddWithValue("code", this.Code);
+                cmdUpdate.Parameters.AddWithValue("name", this.Name);
+                cmdUpdate.Parameters.AddWithValue("type", this.Type.Id);
+                cmdUpdate.Parameters.AddWithValue("tipe", this.Tipe.Id);
+                cmdUpdate.Parameters.AddWithValue("price", this.SellingPrice);
+                cmdUpdate.Parameters.AddWithValue("stock", this.Stock);
+                cmdUpdate.Parameters.AddWithValue("disponibility", this.Disponibility);
+                cmdUpdate.Parameters.AddWithValue("id", this.Id);
+
+                int affectedRows = DataAccess.Instance.ExecuteSet(cmdUpdate);
+
+                Products = Product.FindAll();
+
+                return affectedRows;
+            }
         }
 
         private static List<Color> FindColors(string v)

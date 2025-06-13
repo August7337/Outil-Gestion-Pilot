@@ -10,12 +10,21 @@ namespace Outil_Gestion_Pilot.Models.Attributes
 {
     public class Color
     {
+        private int id;
         private string name;
 
         public static List<Color> Colors = Color.FindAll();
-        public Color(string name)
+
+        public Color(int id, string name)
         {
+            this.Id = id;
             this.Name = name;
+        }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name
@@ -35,6 +44,7 @@ namespace Outil_Gestion_Pilot.Models.Attributes
                 {
                     colors.Add(
                         new Color(
+                            (int)dr["numcouleur"],
                             (string)dr["libellecouleur"]
                         )
                     );

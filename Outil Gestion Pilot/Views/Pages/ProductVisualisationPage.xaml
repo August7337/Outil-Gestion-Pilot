@@ -16,6 +16,7 @@
 
     <Grid>
         <StackPanel>
+            <ui:Button x:Name="but_Retour" Content="Retour" Icon="{ui:SymbolIcon ArrowCircleLeft32}" Click="But_Retour_Click" Margin="0,0,0,10.3"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,20" >
                 <ui:Image 
                     Source="pack://application:,,,/Resources/Img/pen.webp" 
@@ -56,14 +57,17 @@
                         <ui:TextBlock Text="{Binding Product.ColorDisplay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <ui:TextBlock Margin="0,0,5,0">Etat :</ui:TextBlock>
-                        <ui:TextBlock>Disponible</ui:TextBlock>
+                        <ui:TextBlock Margin="0,0,5,0">Disponible :</ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Disponibility}"></ui:TextBlock>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <ui:Button Margin="0,0,15,0">Modifier</ui:Button>
-                <ui:Button>Rendre Indisponible</ui:Button>
+                <ui:Button x:Name="DisponibilityBtn" 
+                    Content="{Binding DisponibilityButtonText}" 
+                    Command="{Binding ToggleDisponibilityCommand}">
+                    </ui:Button>
             </StackPanel>
         </StackPanel>
     </Grid>

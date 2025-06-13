@@ -10,13 +10,21 @@ namespace Outil_Gestion_Pilot.Models.Attributes
 {
     public class Type
     {
+        private int id;
         private string name;
         private Category category;
 
-        public Type(string name, Category category)
+        public Type(int id, string name, Category category)
         {
+            this.Id = id;
             this.Name = name;
             this.Category = category;
+        }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name
@@ -42,6 +50,7 @@ namespace Outil_Gestion_Pilot.Models.Attributes
                 {
                     type.Add(
                         new Type(
+                            (int)dr["numtype"],
                             (string)dr["libelletype"],
                             Category.FindAll()[(int)dr["numcategorie"] - 1]
                         )
