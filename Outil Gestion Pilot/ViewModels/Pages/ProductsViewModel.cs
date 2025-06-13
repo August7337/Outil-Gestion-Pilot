@@ -97,7 +97,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         [ObservableProperty]
         private double searchPx;
         [ObservableProperty]
-            private int searchQte; 
+            private int searchQte;
+        public List<string> Categories { get; } = new List<string> { "Tout","Bureau","Loisir","École","Haute écriture"};
+        public List<string> Types { get; } = new List<string> { "Tout", "Roller gel", "Couleur fun", "Frixion Ball", "Billes", "Roller Liquide", "Plume","Feutre" };
+        public List<string> TypesPointe { get; } = new List<string> { "Tout", "Pointe fine", "Pointe Moyenne", "Pointe Epaisse" };
 
 
 
@@ -110,7 +113,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             if (item is Product product)
             {
-                return CodeSearch(product) && PriceSearch(product) && QteSearch(product);
+                return CodeSearch(product) && PriceSearch(product) && QteSearch(product) && CategorySearch(product) && TypeSearch(product) && TypePointeSearch(product);
             }
             return false;
         }
@@ -228,6 +231,110 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 return true;
 
             return product.Stock == SearchQte;
+        }
+
+        private string _selectedCategory;
+        public string SelectedCategory
+        {
+            get => _selectedCategory;
+            set
+            {
+                if (_selectedCategory != value)
+                {
+                    _selectedCategory = value;
+                    OnPropertyChanged();
+                    ProductsView.Refresh(); // Refresh the view when the category changes
+                }
+            }
+        }
+        public void OnSearchCategoryChanged(string value)
+        {
+            SelectedCategory = value;
+            ProductsView.Refresh();
+        }
+
+        /// <summary>
+        /// Finds the products in the product collection that starts with the text of the obj.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool CategorySearch(object obj)
+        {
+            if (obj is not Product product) return false;
+            if (SelectedCategory == "Tout")
+                return true;
+
+            return string.Equals(product.Category.ToString(), SelectedCategory, StringComparison.OrdinalIgnoreCase);
+        }
+
+        
+        private string _selectedType;
+        public string SelectedType
+        {
+            get => _selectedType;
+            set
+            {
+                if (_selectedType != value)
+                {
+                    _selectedType = value;
+                    OnPropertyChanged();
+                    ProductsView.Refresh(); // Refresh the view when the category changes
+                }
+            }
+        }
+        public void OnSearchTypeChanged(string value)
+        {
+            SelectedType = value;
+            ProductsView.Refresh();
+        }
+
+        /// <summary>
+        /// Filter of Type
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool TypeSearch(object obj)
+        {
+            if (obj is not Product product) return false;
+            if (SelectedType == "Tout")
+                return true;
+
+            return string.Equals(product.Type.ToString(), SelectedType, StringComparison.OrdinalIgnoreCase);
+        }
+
+
+        private string _selectedTypePointe;
+        public string SelectedTypePointe
+        {
+            get => _selectedTypePointe;
+            set
+            {
+                if (_selectedTypePointe != value)
+                {
+                    _selectedTypePointe = value;
+                    OnPropertyChanged();
+                    ProductsView.Refresh(); // Refresh the view when the category changes
+                }
+            }
+        }
+        public void OnSearchTypePointeChanged(string value)
+        {
+            SelectedTypePointe = value;
+            ProductsView.Refresh();
+        }
+
+        /// <summary>
+        /// Filter of TypePointe
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool TypePointeSearch(object obj)
+        {
+            if (obj is not Product product) return false;
+            if (SelectedTypePointe == "Tout")
+                return true;
+
+            return string.Equals(product.Tipe.ToString(), SelectedTypePointe, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

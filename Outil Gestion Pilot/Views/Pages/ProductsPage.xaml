@@ -28,37 +28,26 @@
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Catégorie</Label>
-                    <ComboBox
+                    <ComboBox x:Name="combo_categorie"
+                              ItemsSource="{Binding Categories}"
+                              SelectedItem="{Binding SelectedCategory, Mode=TwoWay}"
                         SelectedIndex="0" >
-                        <ComboBoxItem Content="Toutes" />
-                        <ComboBoxItem Content="Bureau" />
-                        <ComboBoxItem Content="Loisir" />
-                        <ComboBoxItem Content="École" />
-                        <ComboBoxItem Content="Haute écriture" />
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Type :</Label>
-                    <ComboBox
+                    <ComboBox x:Name="combo_type"
+                        ItemsSource="{Binding Types}"
+                        SelectedItem="{Binding SelectedType, Mode=TwoWay}"
                         SelectedIndex="0">
-                        <ComboBoxItem Content="Tout" />
-                        <ComboBoxItem Content="Roller gel" />
-                        <ComboBoxItem Content="Couleur fun" />
-                        <ComboBoxItem Content="Frixion Ball" />
-                        <ComboBoxItem Content="Billes" />
-                        <ComboBoxItem Content="Roller Liquide" />
-                        <ComboBoxItem Content="Plume" />
-                        <ComboBoxItem Content="Feutre"/>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Type de pointe :</Label>
-                    <ComboBox
+                    <ComboBox x:Name="box_TypePointe"
+                        ItemsSource="{Binding TypesPointe}"
+                        SelectedItem="{Binding SelectedTypePointe, Mode=TwoWay}"
                         SelectedIndex="0">
-                        <ComboBoxItem Content="Tout" />
-                        <ComboBoxItem Content="Pointe fine" />
-                        <ComboBoxItem Content="Pointe Moyenne" />
-                        <ComboBoxItem Content="Pointe Epaisse" />
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
