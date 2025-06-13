@@ -109,7 +109,7 @@ namespace Outil_Gestion_Pilot.Models
         public  List<Reseller> FindAll()
         {
             List<Reseller> resellers = new List<Reseller>();
-            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM revendeur;"))
+            using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM revendeur ORDER BY numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 foreach (DataRow dr in dt.Rows)
