@@ -55,5 +55,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
                 Ville = "Lugrin"
             });
         }
+
     }
 }

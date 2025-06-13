@@ -74,6 +74,9 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<DealerWindow>();
                 services.AddSingleton<DealerWindowViewModel>();
 
+                services.AddSingleton<DealersPage>();
+                services.AddSingleton<DealersViewModel>();
+
 
             }).Build();
 

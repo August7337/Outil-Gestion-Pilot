@@ -13,9 +13,11 @@ using Outil_Gestion_Pilot.ViewModels.Windows;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
+    public enum ModeLivraison { UPS, Chronopost, Relais };
     public partial class CartViewModel : ObservableObject
     {
         public ObservableCollection<OrderedProduct> Carts => Cart.Products;
+
 
         public ICollectionView CartView { get; set; }
         [ObservableProperty]
@@ -169,19 +171,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
             return price;
-        }
-
-        public void ButNvxRenvedeur_Click(object sender, EventArgs e)
-        {
-            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Créer);
-            dealerWindow.ShowDialog();
-        }
-
-        public void ButModifyRenvedeur_Click(object sender, EventArgs e)
-        {
-            DealerWindow dealerWindow = new DealerWindow(Views.Windows.Action.Modifier);
-            dealerWindow.ShowDialog();
-
         }
     }
 }

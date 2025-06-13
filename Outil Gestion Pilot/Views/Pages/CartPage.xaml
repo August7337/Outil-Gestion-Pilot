@@ -85,10 +85,10 @@
                     VerticalAlignment="Top" 
                     Margin="5,0,0,0" 
                     Width="100" 
-                    Height="35" >
-                    <ComboBoxItem Content="A" />
-                    <ComboBoxItem Content="B" />
-                    <ComboBoxItem Content="C" />
+                    Height="35">
+                    <ComboBoxItem Content="UPS" />
+                    <ComboBoxItem Content="Chronopost" />
+                    <ComboBoxItem Content="Relais" />
                 </ComboBox>
             </StackPanel>
 
@@ -111,10 +111,9 @@
                 </ComboBox>
             </StackPanel>
 
-            <ui:Button x:Name="butModRevendeur" Content="Modifier Revendeur" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.394,0.604" Margin="25,23,0,0" Height="35" Click="butModRevendeur_Click"/>
-            <ui:Button x:Name="butNvxRenvedeur" Content="Nouveau Revendeur" VerticalAlignment="Top" Width="150" Margin="25,23,0,0" Height="35" Click="butNvxRenvedeur_Click"/>
+            
             <Label x:Name="labPrixTotal" Content="Total HT: 1200€" Width="109"  Margin="25,30,0,0" FontSize="24"/>
-            <ui:Button x:Name="butCommander" Content="Commander le panier" VerticalAlignment="Top" Width="170" Background="#FF0047C8" Foreground="#E4FFFFFF" Margin="30,23,0,0" Height="35" Click="butCommander_Click"/>
+            <ui:Button x:Name="butCommander" Content="Commander le panier" VerticalAlignment="Top" Width="170" Background="#FF0047C8" Foreground="#E4FFFFFF" Margin="150,23,0,0" Height="35" Click="butCommander_Click"/>
         </StackPanel>
     </Grid>
 </Page>

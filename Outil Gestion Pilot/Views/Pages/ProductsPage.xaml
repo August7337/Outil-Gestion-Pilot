@@ -33,6 +33,10 @@
                         <ComboBoxItem Content="Toutes" />
                         <ComboBoxItem Content="Bureau" />
                         <ComboBoxItem Content="Loisir" />
+                        <ComboBoxItem Content="École" />
+                        <ComboBoxItem Content="Haute écriture" />
+
+
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
@@ -43,6 +47,13 @@
                         <ComboBoxItem Content="Roller gel" />
                         <ComboBoxItem Content="Couleur fun" />
                         <ComboBoxItem Content="Frixion Ball" />
+                        <ComboBoxItem Content="Billes" />
+                        <ComboBoxItem Content="Roller Liquide" />
+                        <ComboBoxItem Content="Plume" />
+                        <ComboBoxItem Content="Feutre"/>
+
+
+
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
@@ -51,17 +62,22 @@
                         SelectedIndex="0">
                         <ComboBoxItem Content="Tout" />
                         <ComboBoxItem Content="Pointe fine" />
-                        <ComboBoxItem Content="Pointe moyenne" />
-                        <ComboBoxItem Content="Pointe grosse" />
+                        <ComboBoxItem Content="Pointe Moyenne" />
+                        <ComboBoxItem Content="Pointe Epaisse" />
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Prix :</Label>
-                    <ui:NumberBox MinWidth="100" />
+                    <ui:TextBox x:Name="box_prix" MinWidth="100"
+                                PlaceholderText="Saisir prix"
+                                Text="{Binding SearchPxText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 <StackPanel Margin="0,0,20,0">
                     <Label>Quantité :</Label>
-                    <ui:NumberBox MinWidth="100" />
+                        <ui:TextBox x:Name="box_qte" MinWidth="100"
+                                PlaceholderText="Saisir quantité"
+                                Text="{Binding SearchQteText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                
                 </StackPanel>
                 <StackPanel Width="76">
                     <CheckBox
