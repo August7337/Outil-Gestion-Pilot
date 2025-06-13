@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Outil_Gestion_Pilot.Models.Cart">
+    <Position X="10.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Models\Cart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.DataAccess">
+    <Position X="3.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAgAAAABIBAAAABAABAAQAgAABAAAAA=</HashCode>
+      <FileName>Models\DataAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.LogError">
+    <Position X="1.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LogError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Order">
+    <Position X="10" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CIAACAAAAAAAAAAAAAAQAAAgAAAAIAAAAAAABAiAAAw=</HashCode>
+      <FileName>Models\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.OrderedProduct">
+    <Position X="7.75" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAwAAAAAAAAAQAAAAAAAAAACAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\OrderedProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Product">
+    <Position X="12.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQDAAAAAAAAACAAgAQwAIYEoAAHAICAAQEAwAAACwQ=</HashCode>
+      <FileName>Models\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Reseller">
+    <Position X="5" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAEAAAAAAAAAAQAAAgEAEAAEAAAIAAAACAAAM=</HashCode>
+      <FileName>Models\Reseller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.AppConfig">
+    <Position X="1.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\AppConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Attributes.Category" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAQAAQAAAAEAAAAAAAAAAAACgA=</HashCode>
+      <FileName>Models\Attributes\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Attributes.Color" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAQAAQAAAAEAAAAAAAAgAAAAgA=</HashCode>
+      <FileName>Models\Attributes\Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Attributes.Tipe" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAQAAQAAAAEAAIAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Attributes\Tipe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outil_Gestion_Pilot.Models.Attributes.Type" Collapsed="true">
+    <Position X="2.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAQAAQAAAAEAAAAAAAIAAAACgA=</HashCode>
+      <FileName>Models\Attributes\Type.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Outil_Gestion_Pilot.Models.DataColor" Collapsed="true">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\DataColor.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
