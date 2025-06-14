@@ -12,7 +12,7 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Reseller
     {
-        public static ObservableCollection<Reseller> resellers = new ObservableCollection<Reseller>(); 
+        public static ObservableCollection<Reseller> resellers = FindAll();
 
         private int numeroRevendeur;
         private string raisonSociale;
@@ -126,7 +126,7 @@ namespace Outil_Gestion_Pilot.Models
                 cmdInsert.Parameters.AddWithValue("adresserue", this.Rue);
                 cmdInsert.Parameters.AddWithValue("adressecp", this.Cp);
                 cmdInsert.Parameters.AddWithValue("adresseville", this.Ville);
-                this.NumeroRevendeur = DataAccess.Instance.ExecuteInsert(cmdInsert);
+                DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
         }
 
