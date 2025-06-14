@@ -109,13 +109,31 @@ namespace Outil_Gestion_Pilot.Models
             int nb = 0;
             try
             {
-                cmd.Connection = GetConnection();
-                nb = (int)cmd.ExecuteScalar();
+                if (cmd == null)
+                {
+                    throw new ArgumentNullException(nameof(cmd), "Le NpgsqlCommand passé est null.");
+                }
 
+                var conn = GetConnection();
+                if (conn == null || conn.State != ConnectionState.Open)
+                {
+                    throw new InvalidOperationException("La connexion à la base de données n'est pas ouverte.");
+                }
+                cmd.Connection = conn;
+
+                object result = cmd.ExecuteScalar();
+                if (result == null || result == DBNull.Value)
+                {
+                    throw new Exception("La requête INSERT n'a retourné aucune valeur.");
+                }
+
+                nb = Convert.ToInt32(result);
             }
-            catch (Exception ex) { 
-                LogError.Log(ex, "Pb avec une requete insert " + cmd.CommandText);
-                throw; }
+            catch (Exception ex)
+            {
+                LogError.Log(ex, $"Erreur dans ExecuteInsert : {ex.Message}\nStackTrace : {ex.StackTrace}");
+                throw;
+            }
             return nb;
         }
 

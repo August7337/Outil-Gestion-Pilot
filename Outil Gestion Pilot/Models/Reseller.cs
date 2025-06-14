@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Reseller
     {
-        public static List<Reseller> resellers = new List<Reseller>(); 
+        public static ObservableCollection<Reseller> resellers = new ObservableCollection<Reseller>(); 
 
 
         private int numeroRevendeur;
@@ -120,9 +121,8 @@ namespace Outil_Gestion_Pilot.Models
 
         public void Create()
         {
-            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numrevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville)"))
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (raisonsociale, adresserue, adressecp, adresseville) values (@raisonsociale, @adresserue, @adressecp, @adresseville) RETURNING numrevendeur"))
             {
-                cmdInsert.Parameters.AddWithValue("numrevendeur", this.NumeroRevendeur);
                 cmdInsert.Parameters.AddWithValue("raisonsociale", this.RaisonSociale);
                 cmdInsert.Parameters.AddWithValue("adresserue", this.Rue);
                 cmdInsert.Parameters.AddWithValue("adressecp", this.Cp);

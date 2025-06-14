@@ -37,13 +37,17 @@ namespace Outil_Gestion_Pilot.Views.Pages
                 try
                 {
                     Reseller.resellers.Add(aReseller);
-                    aReseller.Create();
+                    aReseller.Create(); 
+                    ViewModel.DealersView.Refresh();
+                    DealersViewModel dealersViewModel = new DealersViewModel(); // Instancier un ViewModel valide
+                    DealersPage page = new DealersPage(dealersViewModel);
+                    NavigationService.Navigate(page);
+
                 }
                 catch (Exception ex)
                 {
 
                 }
-                ViewModel.DealersView.Refresh();
             }
 
         }

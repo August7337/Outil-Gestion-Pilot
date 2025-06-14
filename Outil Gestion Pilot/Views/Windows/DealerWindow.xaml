@@ -18,7 +18,7 @@
         Foreground="{DynamicResource TextFillColorPrimaryBrush}"
         WindowBackdropType="Mica"
         WindowCornerPreference="Round"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <StackPanel>
         <ui:TitleBar
     x:Name="TitleBar"
@@ -29,8 +29,6 @@
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png"/>
             </ui:TitleBar.Icon>
         </ui:TitleBar>
-        <Label Content="Numéro revendeur" Margin="0,20,0,0" Width="200"/>
-        <ui:TextBox x:Name="box_Num" TextWrapping="Wrap" Text="{Binding NumeroRevendeur}" Width="200"/>
         <Label Content="Raison sociale" Width="200"/>
         <ui:TextBox x:Name="box_RS" TextWrapping="Wrap" Text="{Binding RaisonSociale}" Width="200"/>
         <Label Content="Rue" Width="200"/>
