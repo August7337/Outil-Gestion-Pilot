@@ -34,5 +34,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
             SplashScreenProductWindow splashScreen = new SplashScreenProductWindow();
             splashScreen.ShowDialog();
         }
+
+       
     }
 }

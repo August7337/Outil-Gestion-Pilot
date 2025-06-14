@@ -22,6 +22,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
     public partial class CartViewModel : ObservableObject
     {
+
         public ICollectionView CartView { get; set; }
         [ObservableProperty]
         private string searchCode;

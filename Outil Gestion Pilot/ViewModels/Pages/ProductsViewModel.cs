@@ -38,7 +38,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             ProductsView.Filter = CombinedFilter;
         }
 
-        
+
 
         internal void AddToCart()
         {
@@ -86,7 +86,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 Product copie = new Product(SelectedProduct.Id, SelectedProduct.ImagePath, SelectedProduct.Code, SelectedProduct.Name, SelectedProduct.Type, SelectedProduct.Tipe, SelectedProduct.SellingPrice, SelectedProduct.Stock, SelectedProduct.Color, SelectedProduct.Disponibility);
                 ProductVisualisationPage page = new ProductVisualisationPage(copie);
                 navigationService.Navigate(page);
-                
+
             }
         }
 
@@ -97,9 +97,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         [ObservableProperty]
         private double searchPx;
         [ObservableProperty]
-            private int searchQte;
-        public List<string> Categories { get; } = new List<string> { "Tout","Bureau","Loisir","École","Haute écriture"};
-        public List<string> Types { get; } = new List<string> { "Tout", "Roller gel", "Couleur fun", "Frixion Ball", "Billes", "Roller Liquide", "Plume","Feutre" };
+        private int searchQte;
+        public List<string> Categories { get; } = new List<string> { "Tout", "Bureau", "Loisir", "École", "Haute écriture" };
+        public List<string> Types { get; } = new List<string> { "Tout", "Roller gel", "Couleur fun", "Frixion Ball", "Billes", "Roller Liquide", "Plume", "Feutre" };
         public List<string> TypesPointe { get; } = new List<string> { "Tout", "Pointe fine", "Pointe Moyenne", "Pointe Epaisse" };
 
 
@@ -169,7 +169,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
-       
+
 
         /// <summary>
         /// Refreshes the data grid when the function is called.
@@ -267,7 +267,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return string.Equals(product.Category.ToString(), SelectedCategory, StringComparison.OrdinalIgnoreCase);
         }
 
-        
+
         private string _selectedType;
         public string SelectedType
         {
@@ -336,5 +336,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return string.Equals(product.Tipe.ToString(), SelectedTypePointe, StringComparison.OrdinalIgnoreCase);
         }
+
+       
     }
 }
