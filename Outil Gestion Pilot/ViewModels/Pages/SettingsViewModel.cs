@@ -26,7 +26,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+            AppVersion = $"Pilot - {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }
