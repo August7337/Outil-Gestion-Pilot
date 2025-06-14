@@ -9,8 +9,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
     public partial class OrdersViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private ObservableCollection<Order> orders;
+        //[ObservableProperty]
+        //private ObservableCollection<Order> orders;
 
         [ObservableProperty]
         private double searchCommand;
@@ -40,8 +40,8 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public OrdersViewModel()
         {
-            Orders = new ObservableCollection<Order>(new Order().FindAll());
-            OrdersView = CollectionViewSource.GetDefaultView(Orders);
+            //Orders = new ObservableCollection<Order>(new Order().FindAll());
+            OrdersView = CollectionViewSource.GetDefaultView(Order.Orders);
             OrdersView.Filter = CombinedFilter;
         }
 
@@ -162,11 +162,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return order.CommandeId == SearchCommand;
 
-        }
-
-        public void AddProduct(Order order)
-        {
-            Orders.Add(order);
         }
     }
 }
