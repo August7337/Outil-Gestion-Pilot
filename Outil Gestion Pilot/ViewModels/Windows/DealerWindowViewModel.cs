@@ -24,8 +24,5 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 
             DealerView = CollectionViewSource.GetDefaultView(Dealers);
         }
-
-        
-
     }
 }

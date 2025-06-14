@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,7 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Reseller
     {
-        public static List<Reseller> resellers = new List<Reseller>(); 
-
+        public static ObservableCollection<Reseller> Resellers = FindAll(); 
 
         private int numeroRevendeur;
         private string raisonSociale;
@@ -106,9 +106,9 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public  List<Reseller> FindAll()
+        public static ObservableCollection<Reseller> FindAll()
         {
-            List<Reseller> resellers = new List<Reseller>();
+            ObservableCollection<Reseller> resellers = new ObservableCollection<Reseller>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM revendeur ORDER BY numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
@@ -120,14 +120,14 @@ namespace Outil_Gestion_Pilot.Models
 
         public void Create()
         {
-            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numrevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville)"))
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numrevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville) RETURNING numrevendeur"))
             {
                 cmdInsert.Parameters.AddWithValue("numrevendeur", this.NumeroRevendeur);
                 cmdInsert.Parameters.AddWithValue("raisonsociale", this.RaisonSociale);
                 cmdInsert.Parameters.AddWithValue("adresserue", this.Rue);
                 cmdInsert.Parameters.AddWithValue("adressecp", this.Cp);
                 cmdInsert.Parameters.AddWithValue("adresseville", this.Ville);
-                DataAccess.Instance.ExecuteInsert(cmdInsert);
+                this.NumeroRevendeur = DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
         }
 
@@ -143,7 +143,5 @@ namespace Outil_Gestion_Pilot.Models
                 DataAccess.Instance.ExecuteSet(cmdInsert);
             }
         }
-
-        
     }
 }
