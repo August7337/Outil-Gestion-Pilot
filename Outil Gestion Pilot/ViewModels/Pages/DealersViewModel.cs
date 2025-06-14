@@ -11,8 +11,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
     public partial class DealersViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Reseller> dealers;
-        [ObservableProperty]
         private double searchDealerId;
         [ObservableProperty]
         private string searchReseller;
@@ -21,8 +19,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public DealersViewModel()
         {
-            dealers = new ObservableCollection<Reseller>(new Reseller().FindAll());
-            DealersView = CollectionViewSource.GetDefaultView(dealers);
+            DealersView = CollectionViewSource.GetDefaultView(Reseller.Resellers);
             DealersView.Filter = CombinedFilter;
         }
 
@@ -114,10 +111,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 return true;
 
             return dealer.NumeroRevendeur == SearchDealerId;
-
         }
-
-
     }
 }
 

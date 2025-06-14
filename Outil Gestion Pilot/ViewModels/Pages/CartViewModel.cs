@@ -10,18 +10,18 @@ using Outil_Gestion_Pilot.Views.Windows;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.DirectoryServices;
 using System.Windows.Data;
 using System.Windows.Navigation;
+using Wpf.Ui;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
     public enum ModeLivraison { UPS, Chronopost, Relais };
+
     public partial class CartViewModel : ObservableObject
     {
-        public ObservableCollection<OrderedProduct> Carts => Cart.Products;
-
-
         public ICollectionView CartView { get; set; }
         [ObservableProperty]
         private string searchCode;
@@ -169,7 +169,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         public double ResolvePriceTTC() 
         {
             double price = 0;
-            foreach (OrderedProduct aproduct in Carts)
+            foreach (OrderedProduct aproduct in Cart.Products)
             {
                 price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
             }
@@ -230,9 +230,17 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         }
 
         internal void PurchaseCart()
-        {   
+        {
+            Debug.WriteLine(Order.Orders.Count);
             Create();
             CreateConnection();
+            Cart.Products.Clear();
+
+            Order.Orders.Clear();
+            foreach (Order order in Order.FindAll())
+                Order.Orders.Add(order);
+
+            Debug.WriteLine(Order.Orders.Count);
         }
     }
 }

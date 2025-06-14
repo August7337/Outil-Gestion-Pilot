@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.IO.Pipelines;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Order
     {
+        public static ObservableCollection<Order> Orders = FindAll();
+
         private int commandeId;
         private string reseller;
         private DateTime orderDate;
@@ -69,9 +72,9 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public List<Order> FindAll()
+        public static ObservableCollection<Order> FindAll()
         {
-            List<Order> orders = new List<Order>();
+            ObservableCollection<Order> orders = new ObservableCollection<Order>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT c.numcommande,r.raisonsociale,c.datecommande,m.libelletransport  FROM commande c JOIN modetransport m ON c.numtransport = m.numtransport JOIN revendeur r ON c.numrevendeur = r.numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);

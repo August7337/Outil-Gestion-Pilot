@@ -43,7 +43,8 @@
 
             <TextBlock x:Name="ErrorTxt"
                        Foreground="#E4FF1E1E"
-                       Margin="0,0,0,15"/>
+                       Margin="0,0,0,15"
+                       TextWrapping="Wrap"/>
 
             <ui:Button Content="Se Connecter"
                        Padding="10"

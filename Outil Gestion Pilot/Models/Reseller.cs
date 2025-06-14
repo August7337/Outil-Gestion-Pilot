@@ -14,7 +14,6 @@ namespace Outil_Gestion_Pilot.Models
     {
         public static ObservableCollection<Reseller> resellers = new ObservableCollection<Reseller>(); 
 
-
         private int numeroRevendeur;
         private string raisonSociale;
         private string rue;
@@ -107,9 +106,9 @@ namespace Outil_Gestion_Pilot.Models
             }
         }
 
-        public  List<Reseller> FindAll()
+        public static ObservableCollection<Reseller> FindAll()
         {
-            List<Reseller> resellers = new List<Reseller>();
+            ObservableCollection<Reseller> resellers = new ObservableCollection<Reseller>();
             using (NpgsqlCommand cmdSelect = new NpgsqlCommand("SELECT * FROM revendeur ORDER BY numrevendeur;"))
             {
                 DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
@@ -127,7 +126,7 @@ namespace Outil_Gestion_Pilot.Models
                 cmdInsert.Parameters.AddWithValue("adresserue", this.Rue);
                 cmdInsert.Parameters.AddWithValue("adressecp", this.Cp);
                 cmdInsert.Parameters.AddWithValue("adresseville", this.Ville);
-                DataAccess.Instance.ExecuteInsert(cmdInsert);
+                this.NumeroRevendeur = DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
         }
 
@@ -143,7 +142,5 @@ namespace Outil_Gestion_Pilot.Models
                 DataAccess.Instance.ExecuteSet(cmdInsert);
             }
         }
-
-        
     }
 }

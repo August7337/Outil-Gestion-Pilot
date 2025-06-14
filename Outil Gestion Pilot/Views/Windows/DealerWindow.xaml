@@ -8,9 +8,9 @@
 
         Title="Revendeur"
         Width="300"
-        Height="450"
+        Height="495"
                  
-        d:DesignHeight="450"
+        d:DesignHeight="495"
         d:DesignWidth="300"
         ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
         ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
@@ -21,10 +21,10 @@
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <StackPanel>
         <ui:TitleBar
-    x:Name="TitleBar"
-    Title="Revendeur"
-    Grid.Row="0"
-    CloseWindowByDoubleClickOnIcon="True">
+            x:Name="TitleBar"
+            Title="Revendeur"
+            Grid.Row="0"
+            CloseWindowByDoubleClickOnIcon="True">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/wpfui-icon-256.png"/>
             </ui:TitleBar.Icon>

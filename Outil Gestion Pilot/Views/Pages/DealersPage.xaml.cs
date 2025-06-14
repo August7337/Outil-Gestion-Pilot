@@ -15,8 +15,6 @@ namespace Outil_Gestion_Pilot.Views.Pages
     {
         public DealersViewModel ViewModel { get; }
 
-
-
         public DealersPage(DealersViewModel viewModel)
         {
             ViewModel = viewModel;
@@ -44,12 +42,15 @@ namespace Outil_Gestion_Pilot.Views.Pages
                     NavigationService.Navigate(page);
 
                 }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur");
+                }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message, "Erreur");
                 }
             }
-
         }
 
         private void but_modifyRevendeur_Click(object sender, RoutedEventArgs e)
