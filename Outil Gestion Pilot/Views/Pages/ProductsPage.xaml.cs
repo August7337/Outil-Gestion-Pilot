@@ -35,6 +35,6 @@ namespace Outil_Gestion_Pilot.Views.Pages
             splashScreen.ShowDialog();
         }
 
-       
+        
     }
 }

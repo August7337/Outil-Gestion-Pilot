@@ -122,9 +122,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return ordered.Product.SellingPrice == SearchPrice;
         }
 
-        /// <summary>
-        /// Filter of Quantity
-        /// </summary>
+        
         private string searchQteText;
         public string SearchQteText
         {
@@ -158,6 +156,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             CartView.Refresh();
         }
 
+        /// <summary>
+        /// Filter of Quantity
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         private bool QteSearch(object obj)
         {
             if (obj is not OrderedProduct ordered) return false;
@@ -177,6 +180,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return price;
         }
 
+        /// <summary>
+        /// SQL query to create a new order in the database.
+        /// </summary>
         public void Create()
         {
             try
@@ -199,6 +205,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
+        /// <summary>
+        /// SQL query to create a connection between the order and the products in the cart.
+        /// </summary>
         private void CreateConnection()
         {
             try
@@ -230,6 +239,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
+        /// <summary>
+        /// When the button "Purchase" is clicked, this method is called to create a new order and clear the cart.
+        /// </summary>
         internal void PurchaseCart()
         {
             Debug.WriteLine(Order.Orders.Count);

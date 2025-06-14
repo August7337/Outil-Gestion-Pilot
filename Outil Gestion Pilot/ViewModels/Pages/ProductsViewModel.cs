@@ -11,12 +11,16 @@ using Wpf.Ui.Controls;
 using Outil_Gestion_Pilot.Views.Pages;
 using System.Windows.Navigation;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Runtime.CompilerServices;
+using System.Drawing;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
     public partial class ProductsViewModel : ObservableObject
     {
         private List<Product> products;
+        public List<Color> AvailableColors { get; set; }
 
         [ObservableProperty]
         private Product selectedProduct;
@@ -27,6 +31,54 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             get { return Product.Products; }
             set { Product.Products = value; }
+        }
+        // Propriétés pour les cases à cocher
+        private bool _isBlueChecked;
+        public bool IsBlueChecked
+        {
+            get => _isBlueChecked;
+            set
+            {
+                _isBlueChecked = value;
+                OnPropertyChanged();
+                RefreshProductsView();
+            }
+        }
+
+        private bool _isRedChecked;
+        public bool IsRedChecked
+        {
+            get => _isRedChecked;
+            set
+            {
+                _isRedChecked = value;
+                OnPropertyChanged();
+                RefreshProductsView();
+            }
+        }
+
+        private bool _isGreenChecked;
+        public bool IsGreenChecked
+        {
+            get => _isGreenChecked;
+            set
+            {
+                _isGreenChecked = value;
+                OnPropertyChanged();
+                RefreshProductsView();
+            }
+        }
+
+        private bool _isBlackChecked;
+        public bool IsBlackChecked
+        {
+            get => _isBlackChecked;
+            set
+            {
+                _isBlackChecked = value;
+                OnPropertyChanged();
+                RefreshProductsView();
+            }
         }
 
         [ObservableProperty]
@@ -113,7 +165,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             if (item is Product product)
             {
-                return CodeSearch(product) && PriceSearch(product) && QteSearch(product) && CategorySearch(product) && TypeSearch(product) && TypePointeSearch(product);
+                return CodeSearch(product) && PriceSearch(product) && QteSearch(product) && CategorySearch(product) && TypeSearch(product) && TypePointeSearch(product) && ColorSearch(product);
             }
             return false;
         }
@@ -337,6 +389,34 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return string.Equals(product.Tipe.ToString(), SelectedTypePointe, StringComparison.OrdinalIgnoreCase);
         }
 
-       
+        /// <summary>
+        /// Filter of color
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        private bool ColorSearch(object obj)
+        {
+            if (obj is not Product product) return false;
+
+            bool isAnyColorChecked = IsBlueChecked || IsRedChecked || IsGreenChecked || IsBlackChecked;
+
+            if (!isAnyColorChecked)
+            {
+                return true; // If no color is checked, show all products
+            }
+
+            return (IsBlueChecked && product.Color.Any(c => c.ToString() == "Bleu")) || //product.Color is a List, so we need to use Any -> if any color == blue
+        (IsRedChecked && product.Color.Any(c => c.ToString() == "Rouge")) ||
+        (IsGreenChecked && product.Color.Any(c => c.ToString() == "Vert")) ||
+        (IsBlackChecked && product.Color.Any(c => c.ToString() == "Noir"));
+        }
+
+
+        public void RefreshProductsView()  //Refresh the dataGrid
+        {
+            ProductsView.Refresh();
+        }
+
+    
     }
 }
