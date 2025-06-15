@@ -12,7 +12,6 @@ namespace Outil_Gestion_Pilot.Views.Windows
     public partial class ConnectionWindow : FluentWindow
     {
         public ConnectionWindowViewModel ViewModel { get; set; }
-        //private readonly SessionService sessionService;
 
         public ConnectionWindow()
         {

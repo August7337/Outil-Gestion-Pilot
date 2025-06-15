@@ -3,6 +3,7 @@ using Npgsql;
 using Outil_Gestion_Pilot.Models;
 using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.ViewModels.Windows;
+using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
@@ -30,6 +31,8 @@ namespace Outil_Gestion_Pilot.Views.Windows
             if (result != true)
                 Environment.Exit(0);
 
+            InitTab();
+
             InitializeComponent();
             
             SetPageService(navigationViewPageProvider);
@@ -37,6 +40,31 @@ namespace Outil_Gestion_Pilot.Views.Windows
             navigationService.SetNavigationControl(RootNavigation);
 
             
+        }
+
+        private void InitTab()
+        {
+            if (SessionService.Instance.Role == "Responsable production")
+            {
+                var itemsToRemove = new List<object>();
+
+                foreach (var item in ViewModel.MenuItems)
+                {
+                    if (item is NavigationViewItem navigationItem)
+                    {
+                        string content = navigationItem.Content?.ToString();
+                        if (content == "Panier" || content == "Commandes" || content == "Revendeurs")
+                        {
+                            itemsToRemove.Add(item);
+                        }
+                    }
+                }
+
+                foreach (var item in itemsToRemove)
+                {
+                    ViewModel.MenuItems.Remove(item);
+                }
+            }
         }
 
         #region INavigationWindow methods

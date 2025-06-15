@@ -27,7 +27,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Windows
 
             try
             {
-
                 var role = new NpgsqlCommand("SELECT libellerole FROM employe e " +
                     "JOIN role r on r.numrole = e.numrole " +
                     "WHERE login = @username AND password = @password");
