@@ -19,7 +19,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public DealersViewModel()
         {
-            DealersView = CollectionViewSource.GetDefaultView(Reseller.Resellers);
+            DealersView = CollectionViewSource.GetDefaultView(Reseller.resellers);
             DealersView.Filter = CombinedFilter;
         }
 

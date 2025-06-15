@@ -53,5 +53,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
                 ViewModel.ProductsView.Refresh();
             }
         }
+
+        
     }
 }

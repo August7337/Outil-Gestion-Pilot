@@ -35,8 +35,8 @@
                   x:Name="searchResellerTxt" 
                   Text="{Binding SearchReseller, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
                 </StackPanel>
-                <ui:Button x:Name="but_addRevendeur" Content="Ajouter revendeur" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="but_addRevendeur_Click"/>
-                <ui:Button x:Name="but_modifyRevendeur" Content="Modifier revendeur" Margin="50,10,0,0" VerticalAlignment="Top" Click="but_modifyRevendeur_Click"/>
+                <ui:Button x:Name="but_addRevendeur" Content="Ajouter revendeur" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="but_addRevendeur_Click" Background="#FF0EBF19" Foreground="#E4FFFFFF"/>
+                <ui:Button x:Name="but_modifyRevendeur" Content="Modifier revendeur" Margin="50,10,0,0" VerticalAlignment="Top" Click="but_modifyRevendeur_Click" Foreground="White" Background="#B304C8C4"/>
             </StackPanel>
             <DataGrid
          x:Name="DealersDG"

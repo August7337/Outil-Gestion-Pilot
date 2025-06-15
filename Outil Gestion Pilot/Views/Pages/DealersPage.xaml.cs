@@ -26,6 +26,11 @@ namespace Outil_Gestion_Pilot.Views.Pages
         {
         }
 
+        /// <summary>
+        /// Open the DealerWindow to add a new dealer and refresh the view if the dealer is added successfully.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void but_addRevendeur_Click(object sender, RoutedEventArgs e)
         {
             Reseller aReseller = new Reseller();
@@ -34,8 +39,13 @@ namespace Outil_Gestion_Pilot.Views.Pages
             {
                 try
                 {
-                    Reseller.Resellers.Add(aReseller);
-                    aReseller.Create();
+                    Reseller.resellers.Add(aReseller);
+                    aReseller.Create(); 
+                    ViewModel.DealersView.Refresh();
+                    DealersViewModel dealersViewModel = new DealersViewModel(); // to update the datagrid, we create a new DealerViewModel instance
+                    DealersPage page = new DealersPage(dealersViewModel);
+                    NavigationService.Navigate(page);
+
                 }
                 catch (ArgumentException ex)
                 {
@@ -45,16 +55,20 @@ namespace Outil_Gestion_Pilot.Views.Pages
                 {
                     MessageBox.Show(ex.Message, "Erreur");
                 }
-                ViewModel.DealersView.Refresh();
             }
         }
 
+        /// <summary>
+        /// Open the DealerWindow to modify the selected dealer and refresh the view if the dealer is modified successfully.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void but_modifyRevendeur_Click(object sender, RoutedEventArgs e)
         {
-            if (DealersDG.SelectedItem != null)
+            if (DealersDG.SelectedItem != null) //we can modify a dealer if one of them is selected 
             {
                 Reseller aReseller = (Reseller)DealersDG.SelectedItem;
-                DealerWindow window = new DealerWindow(Windows.Action.Modifier, aReseller);
+                DealerWindow window = new DealerWindow(Windows.Action.Modifier, aReseller); // It's use the same Window as Add a Dealer 
                 if (window.ShowDialog() == true)
                 {
                     try

@@ -12,7 +12,7 @@ namespace Outil_Gestion_Pilot.Models
 {
     public class Reseller
     {
-        public static ObservableCollection<Reseller> Resellers = FindAll(); 
+        public static ObservableCollection<Reseller> resellers = FindAll();
 
         private int numeroRevendeur;
         private string raisonSociale;
@@ -120,14 +120,13 @@ namespace Outil_Gestion_Pilot.Models
 
         public void Create()
         {
-            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (numrevendeur, raisonsociale, adresserue, adressecp, adresseville) values (@numrevendeur, @raisonsociale, @adresserue, @adressecp, @adresseville) RETURNING numrevendeur"))
+            using (var cmdInsert = new NpgsqlCommand("INSERT INTO REVENDEUR (raisonsociale, adresserue, adressecp, adresseville) values (@raisonsociale, @adresserue, @adressecp, @adresseville) RETURNING numrevendeur"))
             {
-                cmdInsert.Parameters.AddWithValue("numrevendeur", this.NumeroRevendeur);
                 cmdInsert.Parameters.AddWithValue("raisonsociale", this.RaisonSociale);
                 cmdInsert.Parameters.AddWithValue("adresserue", this.Rue);
                 cmdInsert.Parameters.AddWithValue("adressecp", this.Cp);
                 cmdInsert.Parameters.AddWithValue("adresseville", this.Ville);
-                this.NumeroRevendeur = DataAccess.Instance.ExecuteInsert(cmdInsert);
+                DataAccess.Instance.ExecuteInsert(cmdInsert);
             }
         }
 

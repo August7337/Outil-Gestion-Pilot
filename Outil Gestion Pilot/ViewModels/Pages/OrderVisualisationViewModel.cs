@@ -32,6 +32,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             OrderedProductView = CollectionViewSource.GetDefaultView(OrderedProducts);
         }
 
+        /// <summary>
+        /// Delete the order from the database and refresh the view.
+        /// </summary>
+        /// <param name="uneCommande"></param>
         public void butSupprimer_Click(Order uneCommande)
         {
 
@@ -40,13 +44,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             {
                 int idCommande = uneCommande.CommandeId;
 
-                using (NpgsqlCommand cmdselect = new NpgsqlCommand("DELETE FROM PRODUITCOMMANDE WHERE numcommande = " + idCommande + ";"))
+                using (NpgsqlCommand cmdselect = new NpgsqlCommand("DELETE FROM PRODUITCOMMANDE WHERE numcommande = " + idCommande + ";")) //SQl Query for delete the order 
                 {
                     DataTable dt = DataAccess.Instance.ExecuteSelect(cmdselect);
-                }
-                using (NpgsqlCommand cmdSelect = new NpgsqlCommand("DELETE FROM COMMANDE WHERE numcommande = " + idCommande + ";"))
-                {
-                    DataTable dt = DataAccess.Instance.ExecuteSelect(cmdSelect);
                 }
                 MessageBox.Show("Suppression effectué.", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
                 CollectionViewSource.GetDefaultView(OrderedProducts).Refresh();
@@ -58,6 +58,10 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
+        /// <summary>
+        /// Calculate the total price of the order including all products.
+        /// </summary>
+        /// <returns></returns>
         public double ResolvePriceTTC()
         {
             double price = 0;
@@ -67,10 +71,12 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
             return price;
         }
-
+        /// <summary>
+        /// Navigate back to the OrdersPage.
+        /// </summary>
         internal void butRetour_Click()
         {
-            OrdersViewModel ordersViewModel = new OrdersViewModel(); // Instancier un ViewModel valide
+            OrdersViewModel ordersViewModel = new OrdersViewModel(); // Create a new instance of OrdersViewModel
             OrdersPage page = new OrdersPage(ordersViewModel);
         }
     }

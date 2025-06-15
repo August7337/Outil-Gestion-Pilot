@@ -64,20 +64,20 @@
                 
                 </StackPanel>
                 <StackPanel Width="76">
-                    <CheckBox
+                    <CheckBox x:Name="check_blue"
                         Content="Bleu"
-                        IsChecked="True" />
-                    <CheckBox
+                        IsChecked="{Binding IsBlueChecked, Mode=TwoWay}" />
+                    <CheckBox x:Name="check_black"
                         Content="Noir" 
-                        IsChecked="True" />
+                        IsChecked="{Binding IsBlackChecked, Mode=TwoWay}" />
                 </StackPanel>
                 <StackPanel>
-                    <CheckBox
+                    <CheckBox x:Name="check_red"
                         Content="Rouge" 
-                        IsChecked="True" />
-                    <CheckBox
-                        Content="Vert" 
-                        IsChecked="True" />
+                        IsChecked="{Binding IsRedChecked, Mode=TwoWay}" />
+                    <CheckBox x:Name="check_green"
+                        Content="Vert"
+                        IsChecked="{Binding IsGreenChecked, Mode=TwoWay}" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Margin="0,0,0,20" Orientation="Horizontal">
