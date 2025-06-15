@@ -161,7 +161,7 @@ namespace Outil_Gestion_Pilot.Models
                             (int)dr["numproduit"],
                             "à implémenter",
                             (string)dr["codeproduit"],
-                            (string)dr["nomproduit"], //
+                            (string)dr["nomproduit"],
                             Attributes.Type.FindAll()[(int)dr["numtype"] - 1],
                             Tipe.FindAll()[(int)dr["numtypepointe"] - 1],
                             Convert.ToDouble(dr["prixvente"]), 
@@ -173,6 +173,31 @@ namespace Outil_Gestion_Pilot.Models
                 }
             }
             return products;
+        }
+
+        public void Create()
+        {
+            try
+            {
+                using (NpgsqlCommand cmdInsert = new NpgsqlCommand(
+                    "INSERT INTO produit (numtypepointe, numtype, codeproduit, nomproduit, prixvente, quantitestock, disponible) " +
+                    "VALUES (@numtypepointe, @numtype, @codeproduit, @nomproduit, @prixvente, @quantitestock, @disponible);"))
+                {
+                    cmdInsert.Parameters.AddWithValue("@numtypepointe", this.Tipe.Id);
+                    cmdInsert.Parameters.AddWithValue("@numtype", this.Type.Id);
+                    cmdInsert.Parameters.AddWithValue("@codeproduit", this.Code);
+                    cmdInsert.Parameters.AddWithValue("@nomproduit", this.Name);
+                    cmdInsert.Parameters.AddWithValue("@prixvente", this.SellingPrice);
+                    cmdInsert.Parameters.AddWithValue("@quantitestock", this.Stock);
+                    cmdInsert.Parameters.AddWithValue("@disponible", this.Disponibility);
+
+                    DataAccess.Instance.ExecuteSet(cmdInsert);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public int Update()

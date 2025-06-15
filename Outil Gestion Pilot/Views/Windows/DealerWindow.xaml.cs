@@ -15,8 +15,6 @@ namespace Outil_Gestion_Pilot.Views.Windows
 
     public partial class DealerWindow : FluentWindow
     {
-        public DealerWindowViewModel ViewModel { get; set; }
-
         public DealerWindow(Action action, Reseller aReseller)
         {
             this.DataContext = aReseller;

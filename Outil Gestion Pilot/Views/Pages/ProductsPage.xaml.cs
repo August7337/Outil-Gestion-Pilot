@@ -31,8 +31,27 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         private void NewProductBtn_Click(object sender, RoutedEventArgs e)
         {
-            SplashScreenProductWindow splashScreen = new SplashScreenProductWindow();
-            splashScreen.ShowDialog();
+            
+
+            Product product = new Product();
+            SplashScreenProductWindow window = new SplashScreenProductWindow(ProductAction.Créer, product);
+            if (window.ShowDialog() == true)
+            {
+                try
+                {
+                    Product.Products.Add(product);
+                    product.Create();
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erreur");
+                }
+                ViewModel.ProductsView.Refresh();
+            }
         }
     }
 }

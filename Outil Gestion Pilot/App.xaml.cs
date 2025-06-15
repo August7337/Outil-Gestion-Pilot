@@ -55,7 +55,6 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<SelectQuantityWindowViewModel>();
 
                 services.AddSingleton<SplashScreenProductWindow>();
-                services.AddSingleton<SplashScreenProductWindowViewModel>();
 
                 services.AddSingleton<ProductsPage>();
                 services.AddSingleton<ProductsViewModel>();
@@ -71,11 +70,9 @@ namespace Outil_Gestion_Pilot
                 services.AddSingleton<ProductVisualisationViewModel>();
 
                 services.AddSingleton<DealerWindow>();
-                services.AddSingleton<DealerWindowViewModel>();
 
                 services.AddSingleton<DealersPage>();
                 services.AddSingleton<DealersViewModel>();
-
 
             }).Build();
 
