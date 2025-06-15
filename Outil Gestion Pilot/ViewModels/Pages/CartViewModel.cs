@@ -27,10 +27,13 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         [ObservableProperty]
         private string searchCode;
 
+        public ObservableCollection<Reseller> Resellers => Reseller.resellers;
+
         public CartViewModel()
         {
             CartView = CollectionViewSource.GetDefaultView(Cart.Products);
             CartView.Filter = CombinedFilter;
+            Cart.Products.CollectionChanged += (s, e) => OnPropertyChanged(nameof(PriceTTC));
         }
 
         /// <summary>
@@ -175,9 +178,14 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             double price = 0;
             foreach (OrderedProduct aproduct in Cart.Products)
             {
-                price += aproduct.Product.SellingPrice * aproduct.Product.DesiredQuantity;
+                price += aproduct.Product.SellingPrice * aproduct.Quantity;
             }
             return price;
+        }
+
+        public double PriceTTC
+        {
+            get => ResolvePriceTTC();
         }
 
         /// <summary>

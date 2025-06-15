@@ -95,15 +95,20 @@
                     Content="Revendeur" 
                     RenderTransformOrigin="0.466,0.509" 
                     Margin="25,0,0,0"/>
-                <ComboBox x:Name="lstRevendeur" 
-                     ItemsSource="{Binding }" 
-                     DisplayMemberPath="raisonSociale"
-                     Width="150" 
-                     Height="35" />
+                <ComboBox x:Name="lstRevendeur"
+                    ItemsSource="{Binding Resellers}"
+                    DisplayMemberPath="RaisonSociale"
+                    SelectedItem="{Binding SelectedReseller, Mode=TwoWay}"
+                    Width="150"
+                    Height="35" />
             </StackPanel>
 
             
-            <Label x:Name="labPrixTotal" Content="Total HT: 1200€" Width="109"  Margin="25,30,0,0" FontSize="24"/>
+            <Label x:Name="labPrixTotal"
+                   Content="{Binding PriceTTC, StringFormat={}{0:N2} €}"
+                   Width="109"
+                   Margin="25,30,0,0"
+                   FontSize="24"/>
             <ui:Button x:Name="butOrder" Content="Commander le panier" VerticalAlignment="Top" Width="170" Appearance="Primary" Margin="150,23,0,0" Height="35" Click="ButOrder_Click"/>
         </StackPanel>
     </Grid>

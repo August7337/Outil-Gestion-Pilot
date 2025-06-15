@@ -55,7 +55,7 @@ ItemsSource="{Binding OrderedProducts}" Margin="0,85,0,102">
                 <DatePicker x:Name="Picker_dateLivraison" HorizontalAlignment="Left" Margin="43,0,0,0" VerticalAlignment="Top"/>
             </StackPanel>
             <Label x:Name="lab_PxTotal" Content="" Margin="163,387,0,0" VerticalAlignment="Top" Height="25" Width="108"/>
-            <Button x:Name="but_Supprimer" Content="Supprimer la commande" Margin="400,373,0,0" VerticalAlignment="Top" Width="181" Background="Red" Foreground="#E4FFFFFF" Click="but_Supprimer_Click" CommandParameter=""/>
+            <ui:Button x:Name="but_Supprimer" Content="Supprimer la commande" Margin="300,373,0,0" VerticalAlignment="Top" Appearance="Danger" Click="but_Supprimer_Click" CommandParameter=""/>
         </StackPanel>
     </Grid>
 </Page>

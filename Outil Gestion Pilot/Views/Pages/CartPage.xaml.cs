@@ -16,14 +16,7 @@ namespace Outil_Gestion_Pilot.Views.Pages
             ViewModel = viewModel;
             DataContext = ViewModel;
             InitializeComponent();
-            SetPriceTTC();
         }
-
-        public void SetPriceTTC()
-        {
-            labPrixTotal.Content = "Total TTC: " + ViewModel.ResolvePriceTTC().ToString() + "€";
-        }
-
 
         private void ButOrder_Click(object sender, RoutedEventArgs e)
         {
@@ -33,8 +26,5 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
             ViewModel.PurchaseCart();
         }
-
-        // Définition de la liste des valeurs
-        
     }
 }

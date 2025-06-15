@@ -98,8 +98,36 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             {
                 SelectQuantityWindow select = new SelectQuantityWindow();
                 bool? result = select.ShowDialog();
+
                 if (result == true)
-                    Cart.Products.Add(new OrderedProduct(select.Quantity, 0, SelectedProduct));
+                {
+                    int requestedQuantity = select.Quantity;
+
+                    var existingProduct = Cart.Products.FirstOrDefault(p => p.Product.Id == SelectedProduct.Id);
+
+                    int currentQuantityInCart = existingProduct?.Quantity ?? 0;
+
+                    if (currentQuantityInCart + requestedQuantity > SelectedProduct.Stock)
+                    {
+                        var uiMessageBox = new Wpf.Ui.Controls.MessageBox
+                        {
+                            Title = "Pilot - Stock insuffisant",
+                            Content = $"Stock insuffisant. Stock disponible : {SelectedProduct.Stock - currentQuantityInCart}.",
+                        };
+
+                        uiMessageBox.ShowDialogAsync();
+                        return;
+                    }
+
+                    if (existingProduct != null)
+                    {
+                        existingProduct.Quantity += requestedQuantity;
+                    }
+                    else
+                    {
+                        Cart.Products.Add(new OrderedProduct(requestedQuantity, 0, SelectedProduct));
+                    }
+                }
             }
             else
             {
@@ -112,6 +140,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 uiMessageBox.ShowDialogAsync();
             }
         }
+
 
         internal void InitializeRoleBtn(Wpf.Ui.Controls.Button cartBtn, Wpf.Ui.Controls.Button viewBtn, Wpf.Ui.Controls.Button newProductBtn)
         {
@@ -152,8 +181,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         public List<string> Types { get; } = new List<string> { "Tout", "Roller gel", "Couleur fun", "Frixion Ball", "Billes", "Roller Liquide", "Plume", "Feutre" };
         public List<string> TypesPointe { get; } = new List<string> { "Tout", "Pointe fine", "Pointe Moyenne", "Pointe Epaisse" };
 
-
-
         /// <summary>
         /// Group the all the filter to use all at the same time
         /// </summary>
@@ -167,11 +194,11 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
             return false;
         }
+
         /// <summary>
         /// Refreshes the data grid when the function is called.
         /// </summary>
         /// <param name="value"></param>
-
         partial void OnSearchCodeChanged(string value)
         {
             ProductsView.Refresh();
@@ -190,7 +217,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return product.Code.StartsWith(SearchCode, StringComparison.OrdinalIgnoreCase);
         }
-
 
         public string SearchPxText
         {
@@ -219,8 +245,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
-
-
         /// <summary>
         /// Refreshes the data grid when the function is called.
         /// </summary>
@@ -238,7 +262,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return product.SellingPrice == SearchPx;
         }
-
 
         /// <summary>
         /// Filter of Quantity
@@ -268,7 +291,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
-
         public void OnSearchQteChanged(double value)
         {
             ProductsView.Refresh();
@@ -297,6 +319,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 }
             }
         }
+
         public void OnSearchCategoryChanged(string value)
         {
             SelectedCategory = value;
@@ -316,7 +339,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
             return string.Equals(product.Category.ToString(), SelectedCategory, StringComparison.OrdinalIgnoreCase);
         }
-
 
         private string _selectedType;
         public string SelectedType
@@ -414,7 +436,5 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         {
             ProductsView.Refresh();
         }
-
-    
     }
 }

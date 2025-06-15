@@ -68,7 +68,7 @@ namespace Outil_Gestion_Pilot.Models
                     orderedProducts.Add(
                         new OrderedProduct(
                             Convert.ToInt32(dr["quantitecommande"]),
-                            Convert.ToInt32(dr["prix"]),
+                            Convert.ToDouble(dr["prix"]),
                             product
                         )
                     );

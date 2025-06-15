@@ -32,7 +32,7 @@
         <StackPanel VerticalAlignment="Center" Width="260" Cursor="">
 
             <Label Target="{Binding ElementName=quantityBox}">Entrer la _quantité souhaitée :</Label>
-            <ui:NumberBox x:Name="quantityBox" Margin="0,0,0,10" />
+            <ui:NumberBox x:Name="quantityBox" Margin="0,0,0,10" Minimum="1" Text="1"/>
 
             <TextBlock x:Name="ErrorTxt"
                        Foreground="#E4FF1E1E"
