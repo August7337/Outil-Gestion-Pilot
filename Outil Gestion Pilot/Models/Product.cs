@@ -1,11 +1,6 @@
 ﻿using Npgsql;
 using Outil_Gestion_Pilot.Models.Attributes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.Linq;
 
 namespace Outil_Gestion_Pilot.Models
 {

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Outil_Gestion_Pilot.Views.Pages;
+﻿using Microsoft.Extensions.Hosting;
 using Outil_Gestion_Pilot.Views.Windows;
 using Wpf.Ui;
 

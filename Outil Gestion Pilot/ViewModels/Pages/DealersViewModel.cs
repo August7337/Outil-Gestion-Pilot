@@ -1,10 +1,6 @@
 ﻿using Outil_Gestion_Pilot.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
-using System.DirectoryServices;
 using System.Windows.Data;
-using System.Windows.Controls;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -22,7 +18,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             DealersView = CollectionViewSource.GetDefaultView(Reseller.resellers);
             DealersView.Filter = CombinedFilter;
         }
-
 
         /// <summary>
         /// Group the all the filter to use all at the same time
@@ -60,7 +55,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return dealer.RaisonSociale.StartsWith(SearchReseller, StringComparison.OrdinalIgnoreCase);
         }
 
-
         private string searchDealerIdText;
         public string SearchDealerIdText
         {
@@ -88,8 +82,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
         }
 
-
-
         /// <summary>
         /// Refreshes the data grid when the function is called.
         /// </summary>
@@ -114,4 +106,3 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         }
     }
 }
-

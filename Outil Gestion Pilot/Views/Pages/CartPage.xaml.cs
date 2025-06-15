@@ -1,8 +1,5 @@
 ﻿using Outil_Gestion_Pilot.Models;
 using Outil_Gestion_Pilot.ViewModels.Pages;
-using Outil_Gestion_Pilot.ViewModels.Windows;
-using System.Collections.ObjectModel;
-using System.Windows.Interop;
 using Wpf.Ui.Abstractions.Controls;
 
 namespace Outil_Gestion_Pilot.Views.Pages

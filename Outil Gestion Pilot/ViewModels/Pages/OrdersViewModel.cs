@@ -1,8 +1,5 @@
 ﻿using Outil_Gestion_Pilot.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
-using System.DirectoryServices;
 using System.Windows.Data;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
@@ -20,7 +17,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public ICollectionView OrdersView { get; set; }
 
-
         public string SearchDate
         {
             get
@@ -35,8 +31,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 OrdersView.Refresh();
             }
         }
-
-
 
         public OrdersViewModel()
         {
@@ -81,8 +75,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return order.Reseller.StartsWith(SearchReseller, StringComparison.OrdinalIgnoreCase);
         }
 
-
-
         public void OnSearchDateChanged(string? value)
         {
             OrdersView.Refresh();
@@ -126,19 +118,15 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 }
                 else
                 {
-
                     if (int.TryParse(value, out int commandId))
                     {
                         SearchCommand = commandId;
                         OrdersView.Refresh();
                     }
                 }
-
                 OnPropertyChanged(nameof(SearchCommandText));
             }
         }
-
-
 
         /// <summary>
         /// Refreshes the data grid when the function is called.
@@ -161,8 +149,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 return true;
 
             return order.CommandeId == SearchCommand;
-
         }
     }
 }
-

@@ -1,20 +1,10 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
+﻿using Npgsql;
 using Outil_Gestion_Pilot.Models;
-using Outil_Gestion_Pilot.Models.Attributes;
-using Outil_Gestion_Pilot.Services;
-using Outil_Gestion_Pilot.ViewModels.Windows;
-using Outil_Gestion_Pilot.Views.Pages;
-using Outil_Gestion_Pilot.Views.Windows;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.DirectoryServices;
 using System.Windows.Data;
-using System.Windows.Navigation;
-using Wpf.Ui;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
 {
@@ -125,7 +115,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return ordered.Product.SellingPrice == SearchPrice;
         }
 
-        
         private string searchQteText;
         public string SearchQteText
         {

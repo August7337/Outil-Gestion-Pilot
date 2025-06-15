@@ -1,12 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Outil_Gestion_Pilot.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Outil_Gestion_Pilot.Models.Tests
+﻿namespace Outil_Gestion_Pilot.Models.Tests
 {
     [TestClass()]
     public class ProductTests

@@ -7,8 +7,6 @@ using Outil_Gestion_Pilot.ViewModels.Windows;
 using Outil_Gestion_Pilot.Views.Pages;
 using Outil_Gestion_Pilot.Views.Windows;
 using System.IO;
-using System.Reflection;
-using System.Windows.Controls;
 using System.Windows.Threading;
 using Wpf.Ui;
 using Wpf.Ui.DependencyInjection;

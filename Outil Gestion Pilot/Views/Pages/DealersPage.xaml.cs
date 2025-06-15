@@ -1,11 +1,6 @@
 ﻿using Outil_Gestion_Pilot.Models;
 using Outil_Gestion_Pilot.ViewModels.Pages;
 using Outil_Gestion_Pilot.Views.Windows;
-using System.Collections.ObjectModel;
-using System.Windows.Controls;
-using System.Windows.Data;
-using Wpf.Ui.Abstractions.Controls;
-using Wpf.Ui.Controls;
 using MessageBox = System.Windows.MessageBox;
 
 

@@ -5,7 +5,6 @@ using System.Windows.Data;
 using Npgsql;
 using System.Data;
 using Outil_Gestion_Pilot.Views.Pages;
-using System.Windows.Navigation;
 
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
@@ -38,7 +37,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         /// <param name="uneCommande"></param>
         public void butSupprimer_Click(Order uneCommande)
         {
-
             MessageBoxResult result = MessageBox.Show("Voulez-vous supprimer cette commade ?", "Suppression", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
@@ -71,6 +69,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
             return price;
         }
+
         /// <summary>
         /// Navigate back to the OrdersPage.
         /// </summary>

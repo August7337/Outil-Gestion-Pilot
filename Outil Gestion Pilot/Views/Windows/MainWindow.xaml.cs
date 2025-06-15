@@ -1,9 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
-using Outil_Gestion_Pilot.Models;
-using Outil_Gestion_Pilot.Services;
+﻿using Outil_Gestion_Pilot.Services;
 using Outil_Gestion_Pilot.ViewModels.Windows;
-using System.Windows.Controls;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
@@ -38,10 +34,11 @@ namespace Outil_Gestion_Pilot.Views.Windows
             SetPageService(navigationViewPageProvider);
 
             navigationService.SetNavigationControl(RootNavigation);
-
-            
         }
 
+        /// <summary>
+        /// Initializes the tab by removing specific menu items based on the user's role.
+        /// </summary>
         private void InitTab()
         {
             if (SessionService.Instance.Role == "Responsable production")
@@ -88,7 +85,6 @@ namespace Outil_Gestion_Pilot.Views.Windows
         {
             base.OnClosed(e);
 
-            // Make sure that closing this window will begin the process of closing the application.
             Application.Current.Shutdown();
         }
 

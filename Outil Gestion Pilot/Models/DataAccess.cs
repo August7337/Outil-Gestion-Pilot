@@ -1,13 +1,6 @@
-
-
-using System.Collections.Generic;
 using System.Data;
-using System.Windows;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 using System.Configuration;
-
-
 
 namespace Outil_Gestion_Pilot.Models
 {
@@ -50,7 +43,6 @@ namespace Outil_Gestion_Pilot.Models
                 throw;
             }
         }
-
 
         /// <summary>
         /// to recover the connection (and open it if necessary)
@@ -136,9 +128,6 @@ namespace Outil_Gestion_Pilot.Models
             }
             return nb;
         }
-
-
-
 
         /// <summary>
         /// for UPDATE, DELETE queries

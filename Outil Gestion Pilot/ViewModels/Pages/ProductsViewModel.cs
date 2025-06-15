@@ -1,18 +1,10 @@
 ﻿using Outil_Gestion_Pilot.Models;
-using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
-using System.DirectoryServices;
 using System.Windows.Data;
-using System.Diagnostics;
 using Outil_Gestion_Pilot.Views.Windows;
 using Outil_Gestion_Pilot.Services;
-using Wpf.Ui.Controls;
 using Outil_Gestion_Pilot.Views.Pages;
 using System.Windows.Navigation;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Runtime.CompilerServices;
 using System.Drawing;
 
 namespace Outil_Gestion_Pilot.ViewModels.Pages
@@ -150,8 +142,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 }
             }
         }
-
-
 
         internal void InitializeRoleBtn(Wpf.Ui.Controls.Button cartBtn, Wpf.Ui.Controls.Button viewBtn, Wpf.Ui.Controls.Button newProductBtn)
         {
@@ -385,7 +375,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             return string.Equals(product.Type.ToString(), SelectedType, StringComparison.OrdinalIgnoreCase);
         }
 
-
         private string _selectedTypePointe;
         public string SelectedTypePointe
         {
@@ -441,7 +430,6 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
         (IsGreenChecked && product.Color.Any(c => c.ToString() == "Vert")) ||
         (IsBlackChecked && product.Color.Any(c => c.ToString() == "Noir"));
         }
-
 
         public void RefreshProductsView()  //Refresh the dataGrid
         {
