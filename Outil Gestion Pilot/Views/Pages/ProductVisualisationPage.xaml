@@ -26,15 +26,15 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Nom :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.Name}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Name, Mode=TwoWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Code :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.Code}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Code, Mode=TwoWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Catégorie :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.Category}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Category, Mode=OneWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Type :</ui:TextBlock>
@@ -46,24 +46,24 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Prix de vente :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.SellingPrice, StringFormat={}{0:N2} €}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.SellingPrice, StringFormat={}{0:N2} €, Mode=TwoWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Quantité de stocks :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.Stock}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Stock, Mode=TwoWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Couleurs :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.ColorDisplay}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.ColorDisplay, Mode=OneWay}"></ui:TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <ui:TextBlock Margin="0,0,5,0">Disponible :</ui:TextBlock>
-                        <ui:TextBlock Text="{Binding Product.Disponibility}"></ui:TextBlock>
+                        <ui:TextBlock Text="{Binding Product.Disponibility, Mode=TwoWay}"></ui:TextBlock>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <ui:Button Margin="0,0,15,0">Modifier</ui:Button>
+                <ui:Button x:Name="ModifyBtn" Margin="0,0,15,0" Click="ModifyBtn_Click">Modifier</ui:Button>
                 <ui:Button x:Name="DisponibilityBtn" 
                     Content="{Binding DisponibilityButtonText}" 
                     Command="{Binding ToggleDisponibilityCommand}">

@@ -134,11 +134,9 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             }
             else
             {
-                Product SelectedProduct = (Product)dataGrid.SelectedItem;
-                Product copie = new Product(SelectedProduct.Id, SelectedProduct.ImagePath, SelectedProduct.Code, SelectedProduct.Name, SelectedProduct.Type, SelectedProduct.Tipe, SelectedProduct.SellingPrice, SelectedProduct.Stock, SelectedProduct.Color, SelectedProduct.Disponibility);
-                ProductVisualisationPage page = new ProductVisualisationPage(copie);
+                Product selectedProduct = (Product)dataGrid.SelectedItem;
+                ProductVisualisationPage page = new ProductVisualisationPage(selectedProduct);
                 navigationService.Navigate(page);
-
             }
         }
 

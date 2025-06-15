@@ -46,22 +46,22 @@
 
             <StackPanel Grid.Row="0" Grid.Column="0">
                 <Label Target="{Binding ElementName=CodeTxt}">_Code :</Label>
-                <ui:TextBox x:Name="CodeTxt" Text="{Binding Code}" PlaceholderText="Entrer le code du produit"/>
+                <ui:TextBox x:Name="CodeTxt" Text="{Binding Code, Mode=TwoWay}" PlaceholderText="Entrer le code du produit"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="2">
                 <Label Target="{Binding ElementName=QteTxt}">_Quantité :</Label>
-                <ui:NumberBox x:Name="QteTxt" Text="{Binding Stock}" PlaceholderText="Entrer la quantité" Minimum="0"/>
+                <ui:NumberBox x:Name="QteTxt" Text="{Binding Stock, Mode=TwoWay}" PlaceholderText="Entrer la quantité" Minimum="0"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0">
                 <Label Target="{Binding ElementName=NomTxt}">_Nom :</Label>
-                <ui:TextBox x:Name="NomTxt" Text="{Binding Name}" PlaceholderText="Entrer le nom du produit"/>
+                <ui:TextBox x:Name="NomTxt" Text="{Binding Name, Mode=TwoWay}" PlaceholderText="Entrer le nom du produit"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="2">
                 <Label Target="{Binding ElementName=PrixTxt}">_Prix :</Label>
-                <ui:NumberBox x:Name="PrixTxt" Text="{Binding SellingPrice}" PlaceholderText="Entrer le prix" Minimum="0"/>
+                <ui:NumberBox x:Name="PrixTxt" Text="{Binding SellingPrice, Mode=TwoWay}" PlaceholderText="Entrer le prix" Minimum="0"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="2">
