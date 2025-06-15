@@ -92,7 +92,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
 
 
-        internal void AddToCart()
+        public void AddToCart()
         {
             if (SelectedProduct != null)
             {
