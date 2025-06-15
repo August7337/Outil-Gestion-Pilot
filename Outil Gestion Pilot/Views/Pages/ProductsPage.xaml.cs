@@ -31,8 +31,6 @@ namespace Outil_Gestion_Pilot.Views.Pages
 
         private void NewProductBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-
             Product product = new Product();
             SplashScreenProductWindow window = new SplashScreenProductWindow(ProductAction.Créer, product);
             if (window.ShowDialog() == true)
@@ -53,7 +51,5 @@ namespace Outil_Gestion_Pilot.Views.Pages
                 ViewModel.ProductsView.Refresh();
             }
         }
-
-        
     }
 }

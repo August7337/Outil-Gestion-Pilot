@@ -32,7 +32,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
             get { return Product.Products; }
             set { Product.Products = value; }
         }
-        // Propriétés pour les cases à cocher
+
         private bool _isBlueChecked;
         public bool IsBlueChecked
         {
@@ -94,42 +94,7 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
 
         public void AddToCart()
         {
-            if (SelectedProduct != null)
-            {
-                SelectQuantityWindow select = new SelectQuantityWindow();
-                bool? result = select.ShowDialog();
-
-                if (result == true)
-                {
-                    int requestedQuantity = select.Quantity;
-
-                    var existingProduct = Cart.Products.FirstOrDefault(p => p.Product.Id == SelectedProduct.Id);
-
-                    int currentQuantityInCart = existingProduct?.Quantity ?? 0;
-
-                    if (currentQuantityInCart + requestedQuantity > SelectedProduct.Stock)
-                    {
-                        var uiMessageBox = new Wpf.Ui.Controls.MessageBox
-                        {
-                            Title = "Pilot - Stock insuffisant",
-                            Content = $"Stock insuffisant. Stock disponible : {SelectedProduct.Stock - currentQuantityInCart}.",
-                        };
-
-                        uiMessageBox.ShowDialogAsync();
-                        return;
-                    }
-
-                    if (existingProduct != null)
-                    {
-                        existingProduct.Quantity += requestedQuantity;
-                    }
-                    else
-                    {
-                        Cart.Products.Add(new OrderedProduct(requestedQuantity, 0, SelectedProduct));
-                    }
-                }
-            }
-            else
+            if (SelectedProduct == null)
             {
                 var uiMessageBox = new Wpf.Ui.Controls.MessageBox
                 {
@@ -138,8 +103,54 @@ namespace Outil_Gestion_Pilot.ViewModels.Pages
                 };
 
                 uiMessageBox.ShowDialogAsync();
+                return;
+            }
+
+            if (!SelectedProduct.Disponibility)
+            {
+                var uiMessageBox = new Wpf.Ui.Controls.MessageBox
+                {
+                    Title = "Pilot - Indisponible",
+                    Content = $"Le produit \"{SelectedProduct.Name}\" n'est actuellement pas disponible.",
+                };
+
+                uiMessageBox.ShowDialogAsync();
+                return;
+            }
+
+            SelectQuantityWindow select = new SelectQuantityWindow();
+            bool? result = select.ShowDialog();
+
+            if (result == true)
+            {
+                int requestedQuantity = select.Quantity;
+
+                var existingProduct = Cart.Products.FirstOrDefault(p => p.Product.Id == SelectedProduct.Id);
+                int currentQuantityInCart = existingProduct?.Quantity ?? 0;
+
+                if (currentQuantityInCart + requestedQuantity > SelectedProduct.Stock)
+                {
+                    var uiMessageBox = new Wpf.Ui.Controls.MessageBox
+                    {
+                        Title = "Pilot - Stock insuffisant",
+                        Content = $"Stock insuffisant. Stock disponible : {SelectedProduct.Stock - currentQuantityInCart}.",
+                    };
+
+                    uiMessageBox.ShowDialogAsync();
+                    return;
+                }
+
+                if (existingProduct != null)
+                {
+                    existingProduct.Quantity += requestedQuantity;
+                }
+                else
+                {
+                    Cart.Products.Add(new OrderedProduct(requestedQuantity, 0, SelectedProduct));
+                }
             }
         }
+
 
 
         internal void InitializeRoleBtn(Wpf.Ui.Controls.Button cartBtn, Wpf.Ui.Controls.Button viewBtn, Wpf.Ui.Controls.Button newProductBtn)
